@@ -3,7 +3,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 namespace BrickBreaker
-{
+{ // Designed by Thomas Neilson
     public class Ball
     {
         public int x, y, xSpeed, ySpeed, size;
