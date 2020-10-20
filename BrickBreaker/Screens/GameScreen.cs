@@ -39,10 +39,8 @@ namespace BrickBreaker
         SolidBrush blockBrush = new SolidBrush(Color.Red);
 
         //int boostSize, boostDraw, boostSpeed;
-        List<int> powerupX= new List<int>();
-        List<int> powerupY = new List<int>();
-        List<int> powerup = new List<int>();
-        //large paddle lot of balls faster 
+        List<powerUP> powerUpList = new List<powerUP>();
+        //large paddle lot of balls faster shield bottom
         Random randGen = new Random();
 
         #endregion
@@ -174,12 +172,10 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-                    powerupX.Add(ball.x);
-                    powerupY.Add(ball.y);
+                    powerUP newPowerUp = new powerUP(ball.x, ball.y);
+                    powerUpList.Add(newPowerUp);
 
                     blocks.Remove(b);
-
-                    powerupMethod();
 
                     if (blocks.Count == 0)
                     {
@@ -197,36 +193,6 @@ namespace BrickBreaker
             Refresh();
         }
 
-        public void powerupMethod()
-        {
-            if (randGen.Next(1, 11) == 6)
-            {
-                switch (randGen.Next(1, 4))
-                {
-                    case 1:
-                        //boostSize = 15;
-                        //powerupY.Add(0);
-                        //boostSpeed = 15;
-                        ////long board
-                        //for (int i = powerup.Count - 1; i <= ; i--)
-                        //{
-                        //    if (powerup[i].shouldRemove)
-                        //    {
-                        //        powerup.RemoveAt(i);
-                        //    }
-                        //}
-                        break;
-                    case 2:
-                        //speed;
-                        break;
-                    case 3:
-                        //double points
-                        break;
-
-                }
-            }
-        }
-
 
         public void OnEnd()
         {
@@ -242,6 +208,14 @@ namespace BrickBreaker
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
+            if (powerUpList.Count > 0)
+            {
+                foreach (powerUP b in powerUpList)
+                {
+                    e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                }
+            }
+
             // Draws paddle
             paddleBrush.Color = paddle.colour;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
@@ -254,6 +228,7 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
         }
     }
 }
