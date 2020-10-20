@@ -149,8 +149,33 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\blueBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exitButtonSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greenBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highscoresButtonSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orangeBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playButtonSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settingsButtonSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellowBrick.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
