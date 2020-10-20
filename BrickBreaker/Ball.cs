@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+//big chungus is funny 
 
 namespace BrickBreaker
 {
-    public class Ball
+    public class Ball 
     {
-        public int x, y, xSpeed, ySpeed, size;
+        public int x, y, xSpeed, ySpeed, size; 
         public Color colour;
 
         public static Random rand = new Random();
@@ -18,6 +19,7 @@ namespace BrickBreaker
             xSpeed = _xSpeed;
             ySpeed = _ySpeed;
             size = _ballSize;
+            
                
         }
 

@@ -17,6 +17,7 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
+        
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -36,6 +37,13 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
+
+        //int boostSize, boostDraw, boostSpeed;
+        List<int> powerupX= new List<int>();
+        List<int> powerupY = new List<int>();
+        List<int> powerup = new List<int>();
+        //large paddle lot of balls faster 
+        Random randGen = new Random();
 
         #endregion
 
@@ -166,7 +174,12 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
+                    powerupX.Add(ball.x);
+                    powerupY.Add(ball.y);
+
                     blocks.Remove(b);
+
+                    powerupMethod();
 
                     if (blocks.Count == 0)
                     {
@@ -175,12 +188,45 @@ namespace BrickBreaker
                     }
 
                     break;
+
                 }
             }
 
+            SolidBrush boostBrush = new SolidBrush(Color.OliveDrab);
             //redraw the screen
             Refresh();
         }
+
+        public void powerupMethod()
+        {
+            if (randGen.Next(1, 11) == 6)
+            {
+                switch (randGen.Next(1, 4))
+                {
+                    case 1:
+                        //boostSize = 15;
+                        //powerupY.Add(0);
+                        //boostSpeed = 15;
+                        ////long board
+                        //for (int i = powerup.Count - 1; i <= ; i--)
+                        //{
+                        //    if (powerup[i].shouldRemove)
+                        //    {
+                        //        powerup.RemoveAt(i);
+                        //    }
+                        //}
+                        break;
+                    case 2:
+                        //speed;
+                        break;
+                    case 3:
+                        //double points
+                        break;
+
+                }
+            }
+        }
+
 
         public void OnEnd()
         {
