@@ -28,110 +28,87 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.playButton = new System.Windows.Forms.Button();
-            this.exitButton = new System.Windows.Forms.Button();
-            this.highscoresButton = new System.Windows.Forms.Button();
-            this.settingsButton = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.menuTimer = new System.Windows.Forms.Timer(this.components);
             this.titleLabel = new System.Windows.Forms.Label();
+            this.brick1 = new System.Windows.Forms.Label();
+            this.brick2 = new System.Windows.Forms.Label();
+            this.brick3 = new System.Windows.Forms.Label();
+            this.brick4 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // playButton
+            // menuTimer
             // 
-            this.playButton.BackColor = System.Drawing.Color.White;
-            this.playButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.playButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.playButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.playButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.playButton.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.playButton.Location = new System.Drawing.Point(50, 100);
-            this.playButton.Name = "playButton";
-            this.playButton.Size = new System.Drawing.Size(150, 50);
-            this.playButton.TabIndex = 0;
-            this.playButton.Text = "Play";
-            this.playButton.UseVisualStyleBackColor = false;
-            this.playButton.Click += new System.EventHandler(this.playButton_Click);
-            // 
-            // exitButton
-            // 
-            this.exitButton.BackColor = System.Drawing.Color.White;
-            this.exitButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(50, 400);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(150, 50);
-            this.exitButton.TabIndex = 1;
-            this.exitButton.Text = "Exit";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
-            // 
-            // highscoresButton
-            // 
-            this.highscoresButton.BackColor = System.Drawing.Color.White;
-            this.highscoresButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.highscoresButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.highscoresButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.highscoresButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.highscoresButton.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.highscoresButton.Location = new System.Drawing.Point(50, 200);
-            this.highscoresButton.Name = "highscoresButton";
-            this.highscoresButton.Size = new System.Drawing.Size(150, 50);
-            this.highscoresButton.TabIndex = 2;
-            this.highscoresButton.Text = "Highscores";
-            this.highscoresButton.UseVisualStyleBackColor = false;
-            this.highscoresButton.Click += new System.EventHandler(this.highscoresButton_Click);
-            // 
-            // settingsButton
-            // 
-            this.settingsButton.BackColor = System.Drawing.Color.White;
-            this.settingsButton.FlatAppearance.BorderColor = System.Drawing.Color.White;
-            this.settingsButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
-            this.settingsButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
-            this.settingsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.settingsButton.Font = new System.Drawing.Font("Tahoma", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.settingsButton.Location = new System.Drawing.Point(50, 300);
-            this.settingsButton.Name = "settingsButton";
-            this.settingsButton.Size = new System.Drawing.Size(150, 50);
-            this.settingsButton.TabIndex = 3;
-            this.settingsButton.Text = "Settings";
-            this.settingsButton.UseVisualStyleBackColor = false;
-            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
+            this.menuTimer.Enabled = true;
+            this.menuTimer.Interval = 20;
+            this.menuTimer.Tick += new System.EventHandler(this.menuTimer_Tick);
             // 
             // titleLabel
             // 
-            this.titleLabel.AutoSize = true;
-            this.titleLabel.Font = new System.Drawing.Font("Tahoma", 48F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleLabel.ForeColor = System.Drawing.Color.White;
-            this.titleLabel.Location = new System.Drawing.Point(277, 37);
+            this.titleLabel.Image = global::BrickBreaker.Properties.Resources.titleSprite;
+            this.titleLabel.Location = new System.Drawing.Point(350, 125);
             this.titleLabel.Name = "titleLabel";
-            this.titleLabel.Size = new System.Drawing.Size(491, 77);
-            this.titleLabel.TabIndex = 4;
-            this.titleLabel.Text = "Brick Breaker!";
+            this.titleLabel.Size = new System.Drawing.Size(375, 250);
+            this.titleLabel.TabIndex = 0;
+            // 
+            // brick1
+            // 
+            this.brick1.Image = global::BrickBreaker.Properties.Resources.yellowBrick;
+            this.brick1.Location = new System.Drawing.Point(414, 22);
+            this.brick1.Name = "brick1";
+            this.brick1.Size = new System.Drawing.Size(59, 29);
+            this.brick1.TabIndex = 1;
+            // 
+            // brick2
+            // 
+            this.brick2.Image = global::BrickBreaker.Properties.Resources.orangeBrick;
+            this.brick2.Location = new System.Drawing.Point(587, 68);
+            this.brick2.Name = "brick2";
+            this.brick2.Size = new System.Drawing.Size(59, 29);
+            this.brick2.TabIndex = 2;
+            // 
+            // brick3
+            // 
+            this.brick3.Image = global::BrickBreaker.Properties.Resources.greenBrick;
+            this.brick3.Location = new System.Drawing.Point(393, 441);
+            this.brick3.Name = "brick3";
+            this.brick3.Size = new System.Drawing.Size(59, 29);
+            this.brick3.TabIndex = 3;
+            // 
+            // brick4
+            // 
+            this.brick4.Image = global::BrickBreaker.Properties.Resources.blueBrick;
+            this.brick4.Location = new System.Drawing.Point(666, 398);
+            this.brick4.Name = "brick4";
+            this.brick4.Size = new System.Drawing.Size(59, 29);
+            this.brick4.TabIndex = 4;
             // 
             // MenuScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(8)))), ((int)(((byte)(8)))), ((int)(((byte)(8)))));
+            this.Controls.Add(this.brick4);
+            this.Controls.Add(this.brick3);
+            this.Controls.Add(this.brick2);
+            this.Controls.Add(this.brick1);
             this.Controls.Add(this.titleLabel);
-            this.Controls.Add(this.settingsButton);
-            this.Controls.Add(this.highscoresButton);
-            this.Controls.Add(this.exitButton);
-            this.Controls.Add(this.playButton);
             this.DoubleBuffered = true;
             this.Name = "MenuScreen";
             this.Size = new System.Drawing.Size(850, 550);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.MenuScreen_Paint);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.MenuScreen_KeyUp);
+            this.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.MenuScreen_PreviewKeyDown);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Button playButton;
-        private System.Windows.Forms.Button exitButton;
-        private System.Windows.Forms.Button highscoresButton;
-        private System.Windows.Forms.Button settingsButton;
+        private System.Windows.Forms.Timer menuTimer;
         private System.Windows.Forms.Label titleLabel;
+        private System.Windows.Forms.Label brick1;
+        private System.Windows.Forms.Label brick2;
+        private System.Windows.Forms.Label brick3;
+        private System.Windows.Forms.Label brick4;
     }
 }
