@@ -1,6 +1,6 @@
-﻿/*  Created by: 
+﻿/*  Created by: Jackson Rawes
  *  Project: Brick Breaker
- *  Date: 
+ *  Date: October 20 2020
  */ 
 using System;
 using System.Collections.Generic;
