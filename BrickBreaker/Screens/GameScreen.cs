@@ -157,7 +157,6 @@ namespace BrickBreaker
                     OnEnd();
                 }
             }
-
             // Check for collision of ball with paddle, (incl. paddle movement)
             ball.PaddleCollision(paddle, leftArrowDown, rightArrowDown);
 
@@ -209,5 +208,6 @@ namespace BrickBreaker
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
         }
+
     }
 }
