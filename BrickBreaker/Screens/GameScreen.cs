@@ -18,6 +18,7 @@ namespace BrickBreaker
 {
     public partial class GameScreen : UserControl
     {
+        
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
@@ -37,6 +38,11 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
+
+        //int boostSize, boostDraw, boostSpeed;
+        List<powerUP> powerUpList = new List<powerUP>();
+        //large paddle lot of balls faster shield bottom
+        Random randGen = new Random();
 
         #endregion
 
@@ -242,11 +248,16 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
+
+                    powerUP newPowerUp = new powerUP(ball.x, ball.y);
+                    powerUpList.Add(newPowerUp);
+
                     numericScore = numericScore + 100;
 
                     //use scoreLabel to display the score to the user
                     scoreLabel.Text = "";
                     scoreLabel.Text = numericScore + "";
+
 
                     blocks.Remove(b);
 
@@ -257,12 +268,15 @@ namespace BrickBreaker
                     }
 
                     break;
+
                 }
             }
 
+            SolidBrush boostBrush = new SolidBrush(Color.OliveDrab);
             //redraw the screen
             Refresh();
         }
+
 
         public void OnEnd()
         {
@@ -281,6 +295,14 @@ namespace BrickBreaker
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
+            if (powerUpList.Count > 0)
+            {
+                foreach (powerUP b in powerUpList)
+                {
+                    e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                }
+            }
+
             // Draws paddle
             paddleBrush.Color = paddle.colour;
             e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
@@ -293,6 +315,7 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
         }
     }
 }

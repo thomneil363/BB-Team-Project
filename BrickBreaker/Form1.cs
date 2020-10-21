@@ -15,6 +15,7 @@ namespace BrickBreaker
         public Form1()
         {
             InitializeComponent();
+            
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -24,6 +25,13 @@ namespace BrickBreaker
             this.Controls.Add(ms);
 
             ms.Location = new Point((this.Width - ms.Width) / 2, (this.Height - ms.Height) / 2);
+
+            SolidBrush boostBrush = new SolidBrush(Color.OliveDrab);
+
+            
+            
+
+
         }
     }
 }
