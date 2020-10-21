@@ -12,11 +12,15 @@ namespace BrickBreaker
 {
     public partial class Form1 : Form
     {
+        
+
         public Form1()
         {
             InitializeComponent();
             
         }
+
+        public static int pause;
 
         private void Form1_Load(object sender, EventArgs e)
         {
