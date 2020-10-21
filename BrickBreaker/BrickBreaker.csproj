@@ -151,9 +151,10 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\blueBrick.png" />
   </ItemGroup>
   <ItemGroup>
@@ -197,8 +198,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\highscoreTitleSprite.png" />
-
-    <Content Include="HighScore.xml" />
+    <None Include="Resources\HighScore.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="HighScore.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Level1.xml" />
     <None Include="Resources\Level 1 background.jpg" />
     <None Include="Resources\redBrick.png" />
@@ -206,7 +211,6 @@
     <None Include="Resources\yellowBrick.png" />
     <None Include="Resources\greenBrick.png" />
     <None Include="Resources\orangeBrick.png" />
-
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

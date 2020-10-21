@@ -47,6 +47,8 @@ namespace BrickBreaker
         // Life Count Text Positions
         public int lifeCountX;
         public int lifeCountY;
+        public int scoreCountX;
+        public int scoreCountY;
 
         //int boostSize, boostDraw, boostSpeed;
         List<powerUP> powerUpList = new List<powerUP>();
@@ -70,10 +72,13 @@ namespace BrickBreaker
         {
             XmlReader reader = XmlReader.Create("Resources/HighScore.xml", null);
 
+            reader.ReadToFollowing("HighScore");
+
             while (reader.Read())
             {
-                if (reader.NodeType == XmlNodeType.Text)
-                {
+                //if (reader.NodeType == XmlNodeType.Text)
+                //{
+                    reader.ReadToFollowing("Score");
 
                     reader.ReadToNextSibling("numericScore");
                     string numericScore = reader.ReadString();
@@ -81,35 +86,38 @@ namespace BrickBreaker
                     reader.ReadToNextSibling("name");
                     string name = reader.ReadString();
 
-                    reader.ReadToNextSibling("date");
-                    string date = reader.ReadString();
+                    //reader.ReadToNextSibling("date");
+                    //string date = reader.ReadString();
 
 
 
                     Score s = new Score(numericScore, name);
                     highScoreList.Add(s);
-                }
+                //}
+
             }
+            reader.Close();
+
 
             //Put in 3 more test scores then break point to ensure they're there
 
-               //if (highScoreList[highScoreList.Count - 1].numericScore < numericScore)
-               //{
-               //     for (int i = 0; i <= highScoreList.Count(); i++)
-               //     {
-               //         if( highScoreList[Score.numericScore] > highScoreList[i])                       
-               //         {
-               //         highScoreList.Insert(i, Score.numericScore);
-               //         }
-                        
-               //     }
+            //if (highScoreList[highScoreList.Count - 1].numericScore < numericScore)
+            //{
+            //     for (int i = 0; i <= highScoreList.Count(); i++)
+            //     {
+            //         if( highScoreList[Score.numericScore] > highScoreList[i])                       
+            //         {
+            //         highScoreList.Insert(i, Score.numericScore);
+            //         }
+
+            //     }
 
             //   }
             //   if (highScoreList.Count >= 11)
             //   {
             //        highScoreList.RemoveAt(10);
             //   }
-               
+
             //    {
             //        highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
             //    }
@@ -121,15 +129,15 @@ namespace BrickBreaker
         {
             XmlWriter writer = XmlWriter.Create("Resources/HighScore.xml", null);
 
-            writer.WriteStartElement("Score");
+            writer.WriteStartElement("HighScore");
 
             foreach (Score s in highScoreList)
             {
-                writer.WriteStartElement("playerProfile");
+                writer.WriteStartElement("Score");
 
                 writer.WriteElementString("numericScore", s.numericScore);
                 writer.WriteElementString("name", s.name);
-                writer.WriteElementString("date", s.date);
+                //writer.WriteElementString("date", s.date);
 
                 writer.WriteEndElement();
             }
@@ -191,7 +199,9 @@ namespace BrickBreaker
 
             lifeCountX = this.Width - this.Width / 8;
             lifeCountY = this.Height - this.Height / 8;
-    }
+            scoreCountX = this.Width / 8;
+            scoreCountY = this.Height - this.Height / 8;
+        }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -277,7 +287,7 @@ namespace BrickBreaker
 
                     numericScore = numericScore + 100;
 
-                    //use scoreLabel to display the score to the user
+                    // use scoreLabel to display the score to the user
                     //scoreLabel.Text = "";
                     //scoreLabel.Text = numericScore + "";
 
@@ -314,8 +324,8 @@ namespace BrickBreaker
             form.Controls.Add(ps);
             form.Controls.Remove(this);
 
-            HighScoreRead();
-            HighScoreWrite();
+             HighScoreRead();
+             HighScoreWrite();
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
@@ -341,30 +351,30 @@ namespace BrickBreaker
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
-
+            e.Graphics.DrawString(numericScore.ToString(), drawFont, ballBrush, scoreCountX, scoreCountY, null);
             e.Graphics.DrawString(lives.ToString(), drawFont, ballBrush, lifeCountX, lifeCountY, null);
         }
 
         public void TPause() // Breifly pauses the game at the start and after a death
         {
-            //ball.stop();
-            //paddle.stop();
-            //Form1.pause = 0;
-            //gameTimer.Enabled = false;
-            //pauseTimer.Enabled = true;
+            ball.stop();
+            paddle.stop();
+            Form1.pause = 0;
+            gameTimer.Enabled = false;
+            pauseTimer.Enabled = true;
         }
 
         private void PauseTimer_Tick(object sender, EventArgs e)
         {
-            //Form1.pause++;
+            Form1.pause++;
 
-            //if (Form1.pause >= 2)
-            //{
-            //    ball.go();
-            //    paddle.go();
-            //    gameTimer.Enabled = true;
-            //    pauseTimer.Enabled = false;
-            //}
+            if (Form1.pause >= 2)
+            {
+                ball.go();
+                paddle.go();
+                gameTimer.Enabled = true;
+                pauseTimer.Enabled = false;
+            }
         }
 
         public void TPaddleReset()
