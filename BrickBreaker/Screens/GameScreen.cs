@@ -1,6 +1,6 @@
-﻿/*  Created by: 
+﻿/*  Created by: Jackson Rawes
  *  Project: Brick Breaker
- *  Date: 
+ *  Date: October 20 2020
  */ 
 using System;
 using System.Collections.Generic;
@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Media;
+using System.Xml;
 
 namespace BrickBreaker
 {
@@ -39,12 +40,87 @@ namespace BrickBreaker
 
         #endregion
 
+        //List that will build highscores using a class to then commit them to a XML file
+        List<Score> highScoreList = new List<Score>();
+        int numericScore;
+
         public GameScreen()
         {
             InitializeComponent();
             OnStart();
         }
 
+        public void HighScoreRead()
+        {
+            XmlReader reader = XmlReader.Create("Resources/HighScore.xml", null);
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+
+                    reader.ReadToNextSibling("numericScore");
+                    string numericScore = reader.ReadString();
+
+                    reader.ReadToNextSibling("name");
+                    string name = reader.ReadString();
+
+                    reader.ReadToNextSibling("date");
+                    string date = reader.ReadString();
+
+
+
+                    Score s = new Score(numericScore, name);
+                    highScoreList.Add(s);
+                }
+            }
+
+            //Put in 3 more test scores then break point to ensure they're there
+
+               if (Score[highScoreList.Count - 1] < Score.numericScore)
+               {
+                    for (int i = 0; i <= highScoreList.Count(); i++)
+                    {
+                        if( highScoreList[Score.numericScore] > highScoreList[i])                       
+                        {
+                        highScoreList.Insert(i, Score.numericScore);
+                        }
+                        
+                    }
+
+               }
+               if (highScoreList.Count >= 11)
+               {
+                    highScoreList.RemoveAt(10);
+               }
+               
+                {
+                    highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
+                }
+
+            reader.Close();
+        }
+
+        public void HighScoreWrite()
+        {
+            XmlWriter writer = XmlWriter.Create("Resources/HighScore.xml", null);
+
+            writer.WriteStartElement("Score");
+
+            foreach (Score s in highScoreList)
+            {
+                writer.WriteStartElement("playerProfile");
+
+                writer.WriteElementString("numericScore", s.numericScore);
+                writer.WriteElementString("name", s.name);
+                writer.WriteElementString("date", s.date);
+
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+            writer.Close();      
+        }
+  
 
         public void OnStart()
         {
@@ -166,6 +242,12 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
+                    numericScore = numericScore + 100;
+
+                    //use scoreLabel to display the score to the user
+                    scoreLabel.Text = "";
+                    scoreLabel.Text = numericScore + "";
+
                     blocks.Remove(b);
 
                     if (blocks.Count == 0)
@@ -192,6 +274,9 @@ namespace BrickBreaker
 
             form.Controls.Add(ps);
             form.Controls.Remove(this);
+
+            HighScoreRead();
+            HighScoreWrite();
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
