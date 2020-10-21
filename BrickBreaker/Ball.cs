@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+//big chungus is funny 
 
 namespace BrickBreaker
+
 { // Designed by Thomas Neilson
     public class Ball
     {
-        public int x, y, xSpeed, ySpeed, size;
+        public int x, y, xSpeed, ySpeed, size; 
         public Color colour;
         public bool movingRight;
 
