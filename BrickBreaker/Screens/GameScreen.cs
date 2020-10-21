@@ -78,16 +78,26 @@ namespace BrickBreaker
 
             //Put in 3 more test scores then break point to ensure they're there
 
-            //    if (Score[highScoreList.Count - 1] < Score.numericScore)
-            //    {
-            //        for (
-            //        {
-            //            highScoreList[]
-            //        }
-            //    }
-            //    {
-            //        highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
-            //    }
+               if (Score[highScoreList.Count - 1] < Score.numericScore)
+               {
+                    for (int i = 0; i <= highScoreList.Count(); i++)
+                    {
+                        if( highScoreList[Score.numericScore] > highScoreList[i])                       
+                        {
+                        highScoreList.Insert(i, Score.numericScore);
+                        }
+                        
+                    }
+
+               }
+               if (highScoreList.Count >= 11)
+               {
+                    highScoreList.RemoveAt(10);
+               }
+
+                {
+                    highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
+                }
 
             reader.Close();
         }

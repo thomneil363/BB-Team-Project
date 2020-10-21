@@ -5,4 +5,14 @@
     <name>James</name>
     <date>20/10/2020</date>
   </Score>
+  <Score>
+    <numericScore>800</numericScore>
+    <name>Jackson</name>
+    <date>20/11/2020</date>
+  </Score>
+  <Score>
+    <numericScore>400</numericScore>
+    <name>Shridar</name>
+    <date>20/9/2020</date>
+  </Score>
 </HighScore>
