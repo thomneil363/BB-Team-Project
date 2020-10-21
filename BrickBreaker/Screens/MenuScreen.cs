@@ -103,6 +103,7 @@ namespace BrickBreaker
             ButtonMenu();
             Refresh();
         }
+
         #endregion menu timer
 
         #region paint graphics
@@ -235,5 +236,6 @@ namespace BrickBreaker
             #endregion exit
         }
         #endregion button menu method
+
     }
 }

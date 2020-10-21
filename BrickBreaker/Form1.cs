@@ -12,10 +12,15 @@ namespace BrickBreaker
 {
     public partial class Form1 : Form
     {
+        
+
         public Form1()
         {
             InitializeComponent();
+            
         }
+
+        public static int pause;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -24,6 +29,13 @@ namespace BrickBreaker
             this.Controls.Add(ms);
 
             ms.Location = new Point((this.Width - ms.Width) / 2, (this.Height - ms.Height) / 2);
+
+            SolidBrush boostBrush = new SolidBrush(Color.OliveDrab);
+
+            
+            
+
+
         }
     }
 }

@@ -28,5 +28,13 @@ namespace BrickBreaker
                 x += speed;
             }
         }
+        public void stop()
+        {
+            speed = 0;
+        }
+        public void go()
+        {
+           speed = 8;
+        }
     }
 }
