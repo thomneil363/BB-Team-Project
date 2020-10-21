@@ -63,9 +63,29 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ballSprite {
+            get {
+                object obj = ResourceManager.GetObject("ballSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap blueBrick {
             get {
                 object obj = ResourceManager.GetObject("blueBrick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap exitButtonSprite {
+            get {
+                object obj = ResourceManager.GetObject("exitButtonSprite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,8 +105,18 @@ namespace BrickBreaker.Properties {
         ///&lt;HighScore&gt;
         ///  &lt;Score&gt;
         ///    &lt;numericScore&gt;100&lt;/numericScore&gt;
-        ///    &lt;name&gt;James&lt;/name&gt;
+        ///    &lt;name&gt;Jms&lt;/name&gt;
         ///    &lt;date&gt;20/10/2020&lt;/date&gt;
+        ///  &lt;/Score&gt;
+        ///  &lt;Score&gt;
+        ///    &lt;numericScore&gt;800&lt;/numericScore&gt;
+        ///    &lt;name&gt;Jsn&lt;/name&gt;
+        ///    &lt;date&gt;20/11/2020&lt;/date&gt;
+        ///  &lt;/Score&gt;
+        ///  &lt;Score&gt;
+        ///    &lt;numericScore&gt;400&lt;/numericScore&gt;
+        ///    &lt;name&gt;Sri&lt;/name&gt;
+        ///    &lt;date&gt;20/9/2020&lt;/date&gt;
         ///  &lt;/Score&gt;
         ///&lt;/HighScore&gt;
         ///.
@@ -94,6 +124,36 @@ namespace BrickBreaker.Properties {
         internal static string HighScore {
             get {
                 return ResourceManager.GetString("HighScore", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap highscoreBox {
+            get {
+                object obj = ResourceManager.GetObject("highscoreBox", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap highscoresButtonSprite {
+            get {
+                object obj = ResourceManager.GetObject("highscoresButtonSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap highscoreTitleSprite {
+            get {
+                object obj = ResourceManager.GetObject("highscoreTitleSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -164,9 +224,59 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap paddleSprite {
+            get {
+                object obj = ResourceManager.GetObject("paddleSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pinkBrick {
+            get {
+                object obj = ResourceManager.GetObject("pinkBrick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap playButtonSprite {
+            get {
+                object obj = ResourceManager.GetObject("playButtonSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap redBrick {
             get {
                 object obj = ResourceManager.GetObject("redBrick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap settingsButtonSprite {
+            get {
+                object obj = ResourceManager.GetObject("settingsButtonSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap titleSprite {
+            get {
+                object obj = ResourceManager.GetObject("titleSprite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
