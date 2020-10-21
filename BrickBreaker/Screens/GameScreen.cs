@@ -42,8 +42,7 @@ namespace BrickBreaker
 
         //List that will build highscores using a class to then commit them to a XML file
         List<Score> highScoreList = new List<Score>();
-        string scoreString;
-        string playerName;
+        int numericScore;
 
         public GameScreen()
         {
@@ -94,7 +93,7 @@ namespace BrickBreaker
                {
                     highScoreList.RemoveAt(10);
                }
-
+               
                 {
                     highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
                 }
@@ -122,11 +121,6 @@ namespace BrickBreaker
             writer.Close();      
         }
   
-        public void HighScoreSort()
-        {
-
-            
-        }
 
         public void OnStart()
         {
@@ -248,6 +242,12 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
+                    numericScore = numericScore + 100;
+
+                    //use scoreLabel to display the score to the user
+                    scoreLabel.Text = "";
+                    scoreLabel.Text = numericScore + "";
+
                     blocks.Remove(b);
 
                     if (blocks.Count == 0)
