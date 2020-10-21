@@ -37,7 +37,13 @@ namespace BrickBreaker
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
 
+        // Fonts
+        Font drawFont = new Font("Tahoma", 20);
         #endregion
+
+        // Life Count Text Positions
+        public int lifeCountX;
+        public int lifeCountY;
 
         public GameScreen()
         {
@@ -90,7 +96,16 @@ namespace BrickBreaker
 
             // start the game engine loop
             gameTimer.Enabled = true;
-        }
+
+            // Game Start Pause
+            TPaddleReset();
+            ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+            ball.y = (this.Height - paddle.height) - 85;
+            TPause();
+
+            lifeCountX = this.Width - this.Width / 8;
+            lifeCountY = this.Height - this.Height / 8;
+    }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -126,6 +141,7 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -148,8 +164,12 @@ namespace BrickBreaker
                 lives--;
 
                 // Moves the ball back to origin
+                TPaddleReset();
+
                 ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
                 ball.y = (this.Height - paddle.height) - 85;
+
+                TPause();
 
                 if (lives == 0)
                 {
@@ -176,6 +196,7 @@ namespace BrickBreaker
                     break;
                 }
             }
+
 
             //redraw the screen
             Refresh();
@@ -207,7 +228,36 @@ namespace BrickBreaker
 
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+
+            e.Graphics.DrawString(lives.ToString(), drawFont, ballBrush, lifeCountX, lifeCountY, null);
         }
 
+        public void TPause() // Breifly pauses the game at the start and after a death
+        {
+            ball.stop();
+            paddle.stop();
+            Form1.pause = 0;
+            gameTimer.Enabled = false;
+            pauseTimer.Enabled = true;
+        }
+
+        private void PauseTimer_Tick(object sender, EventArgs e)
+        {
+            Form1.pause++;
+
+            if (Form1.pause >= 2)
+            {
+                ball.go();
+                paddle.go();
+                gameTimer.Enabled = true;
+                pauseTimer.Enabled = false;
+            }
+        }
+
+        public void TPaddleReset()
+        {
+            paddle.x = ((this.Width / 2) - (paddle.width / 2));
+            paddle.y = (this.Height - paddle.height) - 60;
+        }
     }
 }

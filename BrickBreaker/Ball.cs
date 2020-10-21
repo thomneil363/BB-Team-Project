@@ -110,7 +110,7 @@ namespace BrickBreaker
                     else
                     {
                         // Noting the direction the ball is moving
-                        int direction; 
+                        int direction;
 
                         if (xSpeed < 0)
                         {
@@ -267,6 +267,17 @@ namespace BrickBreaker
         {
             ySpeed = (12 - xSpeed) * -1;
 
+        }
+
+        public void stop()
+        {
+            xSpeed = 0;
+            ySpeed = 0;
+        }
+        public void go()
+        {
+            xSpeed = -6;
+            ySpeed = -6;
         }
     }
 }
