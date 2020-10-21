@@ -28,13 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.highscoreBox = new System.Windows.Forms.Label();
+            this.highScoreLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // highscoreBox
+            // 
+            this.highscoreBox.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highscoreBox.ForeColor = System.Drawing.Color.White;
+            this.highscoreBox.Image = global::BrickBreaker.Properties.Resources.highscoreBox;
+            this.highscoreBox.Location = new System.Drawing.Point(420, 25);
+            this.highscoreBox.Name = "highscoreBox";
+            this.highscoreBox.Size = new System.Drawing.Size(400, 500);
+            this.highscoreBox.TabIndex = 0;
+            this.highscoreBox.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // highScoreLabel
+            // 
+            this.highScoreLabel.Font = new System.Drawing.Font("Tahoma", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.highScoreLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.highScoreLabel.Location = new System.Drawing.Point(460, 65);
+            this.highScoreLabel.Name = "highScoreLabel";
+            this.highScoreLabel.Size = new System.Drawing.Size(320, 420);
+            this.highScoreLabel.TabIndex = 1;
+            this.highScoreLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // HighscoresScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
+            this.Controls.Add(this.highScoreLabel);
+            this.Controls.Add(this.highscoreBox);
             this.DoubleBuffered = true;
             this.Name = "HighscoresScreen";
             this.Size = new System.Drawing.Size(850, 550);
@@ -43,5 +68,8 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Label highscoreBox;
+        private System.Windows.Forms.Label highScoreLabel;
     }
 }

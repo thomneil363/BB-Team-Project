@@ -63,6 +63,16 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ballSprite {
+            get {
+                object obj = ResourceManager.GetObject("ballSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap blueBrick {
             get {
                 object obj = ResourceManager.GetObject("blueBrick", resourceCulture);
@@ -93,6 +103,16 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap highscoreBox {
+            get {
+                object obj = ResourceManager.GetObject("highscoreBox", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap highscoresButtonSprite {
             get {
                 object obj = ResourceManager.GetObject("highscoresButtonSprite", resourceCulture);
@@ -106,6 +126,16 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap orangeBrick {
             get {
                 object obj = ResourceManager.GetObject("orangeBrick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap paddleSprite {
+            get {
+                object obj = ResourceManager.GetObject("paddleSprite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

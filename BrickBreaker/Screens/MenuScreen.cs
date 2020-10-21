@@ -28,7 +28,7 @@ namespace BrickBreaker
         Rectangle playerRec;
 
         //images for button sprites and title
-        Image playButtonSprite, highscoreButtonSprite, settingsButtonSprite, exitButtonSprite;
+        Image playButtonSprite, highscoreButtonSprite, settingsButtonSprite, exitButtonSprite, playerSprite;
 
         #endregion variable declarations
 
@@ -43,6 +43,7 @@ namespace BrickBreaker
             highscoreButtonSprite = Properties.Resources.highscoresButtonSprite;
             settingsButtonSprite = Properties.Resources.settingsButtonSprite;
             exitButtonSprite = Properties.Resources.exitButtonSprite;
+            playerSprite = Properties.Resources.ballSprite;
         }
         #endregion component initialization and general setup
 
@@ -56,7 +57,7 @@ namespace BrickBreaker
             exitRec = new Rectangle(50, 400, 150, 50);
 
             //set player location
-            playerRec = new Rectangle(playRec.X + 25, playRec.Y + 20, 10, 10);
+            playerRec = new Rectangle(playRec.X + 20, playRec.Y + 15, 10, 10);
         }
         #endregion menu setup
 
@@ -107,14 +108,14 @@ namespace BrickBreaker
         #region paint graphics
         private void MenuScreen_Paint(object sender, PaintEventArgs e)
         {
-            //draw menu buttons and title
+            //draw menu buttons and player
             e.Graphics.DrawImage(playButtonSprite, playRec.X, playRec.Y);
             e.Graphics.DrawImage(highscoreButtonSprite, highscoresRec.X, highscoresRec.Y);
             e.Graphics.DrawImage(settingsButtonSprite, settingsRec.X, settingsRec.Y);
             e.Graphics.DrawImage(exitButtonSprite, exitRec.X, exitRec.Y);
 
             //draw player
-            e.Graphics.FillRectangle(drawBrush, playerRec);
+            e.Graphics.DrawImage(playerSprite, playerRec.X, playerRec.Y);
         }
         #endregion paint graphics
 
@@ -140,7 +141,7 @@ namespace BrickBreaker
                 }
                 if (downArrowDown == true)
                 {
-                    playerRec = new Rectangle(highscoresRec.X + 25, highscoresRec.Y + 20, 10, 10);
+                    playerRec = new Rectangle(highscoresRec.X + 20, highscoresRec.Y + 15, 10, 10);
                     downArrowDown = false;
 
                     Thread.Sleep(150);
@@ -168,13 +169,13 @@ namespace BrickBreaker
                 }
                 if (upArrowDown == true)
                 {
-                    playerRec = new Rectangle(playRec.X + 25, playRec.Y + 20, 10, 10);
+                    playerRec = new Rectangle(playRec.X + 20, playRec.Y + 15, 10, 10);
 
                     Thread.Sleep(150);
                 }
                 if (downArrowDown == true)
                 {
-                    playerRec = new Rectangle(settingsRec.X + 25, settingsRec.Y + 20, 10, 10);
+                    playerRec = new Rectangle(settingsRec.X + 20, settingsRec.Y + 15, 10, 10);
                     downArrowDown = false;
 
                     Thread.Sleep(150);
@@ -202,13 +203,13 @@ namespace BrickBreaker
                 }
                 if (upArrowDown == true)
                 {
-                    playerRec = new Rectangle(highscoresRec.X + 25, highscoresRec.Y + 20, 10, 10);
+                    playerRec = new Rectangle(highscoresRec.X + 20, highscoresRec.Y + 15, 10, 10);
 
                     Thread.Sleep(150);
                 }
                 if (downArrowDown == true)
                 {
-                    playerRec = new Rectangle(exitRec.X + 25, exitRec.Y + 20, 10, 10);
+                    playerRec = new Rectangle(exitRec.X + 20, exitRec.Y + 15, 10, 10);
                     downArrowDown = false;
 
                     Thread.Sleep(150);
@@ -226,7 +227,7 @@ namespace BrickBreaker
                 }
                 if (upArrowDown == true)
                 {
-                    playerRec = new Rectangle(settingsRec.X + 25, settingsRec.Y + 20, 10, 10);
+                    playerRec = new Rectangle(settingsRec.X + 20, settingsRec.Y + 15, 10, 10);
 
                     Thread.Sleep(150);
                 }
