@@ -53,7 +53,7 @@ namespace BrickBreaker
         //large paddle lot of balls faster shield bottom
         Random randGen = new Random();
 
-        #endregion
+        
 
         //List that will build highscores using a class to then commit them to a XML file
         List<Score> highScoreList = new List<Score>();
@@ -93,28 +93,28 @@ namespace BrickBreaker
 
             //Put in 3 more test scores then break point to ensure they're there
 
-               if (Score[highScoreList.Count - 1] < Score.numericScore)
-               {
-                    for (int i = 0; i <= highScoreList.Count(); i++)
-                    {
-                        if( highScoreList[Score.numericScore] > highScoreList[i])                       
-                        {
-                        highScoreList.Insert(i, Score.numericScore);
-                        }
+               //if (highScoreList[highScoreList.Count - 1].numericScore < numericScore)
+               //{
+               //     for (int i = 0; i <= highScoreList.Count(); i++)
+               //     {
+               //         if( highScoreList[Score.numericScore] > highScoreList[i])                       
+               //         {
+               //         highScoreList.Insert(i, Score.numericScore);
+               //         }
                         
-                    }
+               //     }
 
-               }
-               if (highScoreList.Count >= 11)
-               {
-                    highScoreList.RemoveAt(10);
-               }
+            //   }
+            //   if (highScoreList.Count >= 11)
+            //   {
+            //        highScoreList.RemoveAt(10);
+            //   }
                
-                {
-                    highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
-                }
+            //    {
+            //        highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
+            //    }
 
-            reader.Close();
+            //reader.Close();
         }
 
         public void HighScoreWrite()
@@ -278,8 +278,8 @@ namespace BrickBreaker
                     numericScore = numericScore + 100;
 
                     //use scoreLabel to display the score to the user
-                    scoreLabel.Text = "";
-                    scoreLabel.Text = numericScore + "";
+                    //scoreLabel.Text = "";
+                    //scoreLabel.Text = numericScore + "";
 
 
                     blocks.Remove(b);
@@ -347,24 +347,24 @@ namespace BrickBreaker
 
         public void TPause() // Breifly pauses the game at the start and after a death
         {
-            ball.stop();
-            paddle.stop();
-            Form1.pause = 0;
-            gameTimer.Enabled = false;
-            pauseTimer.Enabled = true;
+            //ball.stop();
+            //paddle.stop();
+            //Form1.pause = 0;
+            //gameTimer.Enabled = false;
+            //pauseTimer.Enabled = true;
         }
 
         private void PauseTimer_Tick(object sender, EventArgs e)
         {
-            Form1.pause++;
+            //Form1.pause++;
 
-            if (Form1.pause >= 2)
-            {
-                ball.go();
-                paddle.go();
-                gameTimer.Enabled = true;
-                pauseTimer.Enabled = false;
-            }
+            //if (Form1.pause >= 2)
+            //{
+            //    ball.go();
+            //    paddle.go();
+            //    gameTimer.Enabled = true;
+            //    pauseTimer.Enabled = false;
+            //}
         }
 
         public void TPaddleReset()
