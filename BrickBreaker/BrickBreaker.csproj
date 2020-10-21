@@ -71,6 +71,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\HighscoresScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\HighscoresScreen.Designer.cs">
+      <DependentUpon>HighscoresScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Paddle.cs" />
     <Compile Include="powerUP.cs" />
     <Compile Include="Program.cs" />
@@ -88,6 +94,12 @@
     <Compile Include="Screens\GameScreen.Designer.cs">
       <DependentUpon>GameScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\SettingsScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\SettingsScreen.Designer.cs">
+      <DependentUpon>SettingsScreen.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,11 +113,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Screens\HighscoresScreen.resx">
+      <DependentUpon>HighscoresScreen.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Screens\MenuScreen.resx">
       <DependentUpon>MenuScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\GameScreen.resx">
       <DependentUpon>GameScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\SettingsScreen.resx">
+      <DependentUpon>SettingsScreen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="Properties\Settings.settings">
@@ -135,6 +153,51 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+
+    <None Include="Resources\blueBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exitButtonSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\greenBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highscoresButtonSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\orangeBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\playButtonSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settingsButtonSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\yellowBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\titleSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highscoreBox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ballSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\paddleSprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pinkBrick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\highscoreTitleSprite.png" />
+
     <Content Include="HighScore.xml" />
     <Content Include="Level1.xml" />
     <None Include="Resources\Level 1 background.jpg" />
@@ -143,6 +206,7 @@
     <None Include="Resources\yellowBrick.png" />
     <None Include="Resources\greenBrick.png" />
     <None Include="Resources\orangeBrick.png" />
+
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
