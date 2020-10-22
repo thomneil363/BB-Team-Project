@@ -429,31 +429,31 @@ namespace BrickBreaker
                 powerUpList.Add(newPowerUp);
             }
         }
-        public void FreezePowerup() // 1
+        public void FreezePowerup() // 1 Timed
         {
 
         }
 
-        public void ShieldPowerup() // 2
+        public void ShieldPowerup() // 2 Constant until bottom hit
         {
 
         }
 
-        public void FirePowerup() // 3
+        public void FirePowerup() // 3 Timed
         {
 
         }
 
-        public void MultiPowerup() // 4
+        public void MultiPowerup() // 4 Constant until ball die.
         {
 
         }
 
-        public void LengthPowerup() // 5
+        public void LengthPowerup() // 5 Timed
         {
 
         }
-        public void DoublePowerup() // 6
+        public void DoublePowerup() // 6 Timed
         {
 
         }
