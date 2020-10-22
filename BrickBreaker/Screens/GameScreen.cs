@@ -141,7 +141,7 @@ namespace BrickBreaker
             foreach (Score s in highScoreList)
             {
                 writer.WriteStartElement("Score");
-
+                    
                 writer.WriteElementString("numericScore", s.numericScore);
                 writer.WriteElementString("name", s.name);
                 //writer.WriteElementString("date", s.date);

@@ -222,6 +222,17 @@
     <None Include="Resources\pinkBrick.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\level2.xml" />
+    <None Include="Resources\level1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\level13.xml" />
+    <None Include="Resources\level6.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\level12.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Resources\sign.png" />
     <None Include="Resources\Smashing-Yuri_Santana-1233262689.wav" />
     <None Include="Resources\Level 1 background.png" />
@@ -251,10 +262,11 @@
     <None Include="Resources\HighScore.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="bin\Debug\Resources\level6.xml" />
+    <None Include="bin\Debug\Resources\level7.xml" />
     <Content Include="HighScore.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Level1.xml" />
     <None Include="Resources\Level 1 background.jpg" />
     <None Include="Resources\redBrick.png" />
     <None Include="Resources\blueBrick.png" />
@@ -262,9 +274,7 @@
     <None Include="Resources\greenBrick.png" />
     <None Include="Resources\orangeBrick.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Debug\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
