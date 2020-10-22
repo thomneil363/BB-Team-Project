@@ -10,7 +10,7 @@ namespace BrickBreaker
 {
     class powerUP//james
     {
-        // 
+        // 1 is Freeze, 2 is Shield, 3 is Fire, 4 is Multi, 5 is Length, and 6 is Double
         public int x, y, type, size;
 
         public powerUP(int _x, int _y, int _type, int _size)
