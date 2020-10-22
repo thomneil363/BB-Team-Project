@@ -12,6 +12,7 @@ using WMPLib;
 
 namespace BrickBreaker
 {
+    //Test
     public partial class SettingsScreen : UserControl
     {
         #region variable declarations
