@@ -17,7 +17,6 @@ namespace BrickBreaker
         public Form1()
         {
             InitializeComponent();
-            
         }
 
         public static int pause;
@@ -31,10 +30,6 @@ namespace BrickBreaker
             ms.Location = new Point((this.Width - ms.Width) / 2, (this.Height - ms.Height) / 2);
 
             SolidBrush boostBrush = new SolidBrush(Color.OliveDrab);
-
-            
-            
-
 
         }
     }

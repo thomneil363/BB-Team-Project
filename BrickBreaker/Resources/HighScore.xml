@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<HighScore>
+  <Score>
+    <numericScore>100</numericScore>
+    <name>Jms</name>
+    <date>20/10/2020</date>
+  </Score>
+  <Score>
+    <numericScore>800</numericScore>
+    <name>Jsn</name>
+    <date>20/11/2020</date>
+  </Score>
+  <Score>
+    <numericScore>400</numericScore>
+    <name>Sri</name>
+    <date>20/9/2020</date>
+  </Score>
+</HighScore>

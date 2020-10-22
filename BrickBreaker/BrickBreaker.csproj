@@ -161,6 +161,9 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+
+    <Folder Include="bin\Debug\" />
+
     <COMReference Include="AxWMPLib">
       <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -178,6 +181,7 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\blueBrick.png" />
@@ -230,7 +234,14 @@
     <None Include="Resources\gameoverTitleSprite.png" />
     <None Include="Resources\shieldSprite.png" />
     <None Include="Resources\highscoreTitleSprite.png" />
-    <Content Include="HighScore.xml" />
+
+    <None Include="Resources\HighScore.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="HighScore.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+
     <Content Include="Level1.xml" />
     <None Include="Resources\Level 1 background.jpg" />
     <None Include="Resources\redBrick.png" />

@@ -138,9 +138,11 @@
   </data>
   <data name="highscoreTitleSprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\highscoreTitleSprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+
   </data>
   <data name="HighScore" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\HighScore.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+
   </data>
   <data name="Level1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Level1.xml;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
@@ -172,6 +174,7 @@
   <data name="yellowBrick" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\yellowBrick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+
   <data name="shieldSprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\shieldSprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -192,5 +195,6 @@
   </data>
   <data name="instructionsBox" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\instructionsBox.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+
   </data>
 </root>

@@ -36,5 +36,33 @@ namespace BrickBreaker
         {
            speed = 8;
         }
+
+        public void PoweredUp(int type)
+        {
+            if (type == 1)
+            {
+
+            }
+            else if (type == 2)
+            {
+
+            }
+            else if (type == 3)
+            {
+
+            }
+            else if (type == 4)
+            {
+
+            }
+            else if (type == 5)
+            {
+
+            }
+            else if (type == 6)
+            {
+
+            }
+        }
     }
 }

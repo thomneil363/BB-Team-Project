@@ -16,6 +16,7 @@ using System.Xml;
 
 namespace BrickBreaker
 {
+
     public partial class GameScreen : UserControl
     {
         
@@ -47,12 +48,22 @@ namespace BrickBreaker
         // Life Count Text Positions
         public int lifeCountX;
         public int lifeCountY;
+        public int scoreCountX;
+        public int scoreCountY;
+
+        // Powerup Ints
+        public int powerUpSize;
+        public int powerUpEffect;
 
 
         //int boostSize, boostDraw, boostSpeed;
         List<powerUP> powerUpList = new List<powerUP>();
+
         //large paddle lot of balls faster shield bottom
         Random randGen = new Random();
+
+        Random powerUpChance = new Random();
+        Random powerUpGen = new Random();
 
 
         //List that will build highscores using a class to then commit them to a XML file
@@ -70,10 +81,13 @@ namespace BrickBreaker
         {
             XmlReader reader = XmlReader.Create("Resources/HighScore.xml", null);
 
+            reader.ReadToFollowing("HighScore");
+
             while (reader.Read())
             {
-                if (reader.NodeType == XmlNodeType.Text)
-                {
+                //if (reader.NodeType == XmlNodeType.Text)
+                //{
+                    reader.ReadToFollowing("Score");
 
                     reader.ReadToNextSibling("numericScore");
                     string numericScore = reader.ReadString();
@@ -81,13 +95,16 @@ namespace BrickBreaker
                     reader.ReadToNextSibling("name");
                     string name = reader.ReadString();
 
-                    reader.ReadToNextSibling("date");
-                    string date = reader.ReadString();
+                    //reader.ReadToNextSibling("date");
+                    //string date = reader.ReadString();
 
                     Score s = new Score(numericScore, name);
                     highScoreList.Add(s);
-                }
+                //}
+
             }
+            reader.Close();
+
 
             //Put in 3 more test scores then break point to ensure they're there
 
@@ -108,41 +125,21 @@ namespace BrickBreaker
                 highScoreList.RemoveAt(3);
             }
 
-            //if (highScoreList[highScoreList.Count - 1].numericScore < numericScore)
-            //{
-            //    for (int i = 0; i <= highScoreList.Count(); i++)
-            //    {
-            //        if (highScoreList[Score.numericScore] > highScoreList[i])
-            //        {
-            //            highScoreList.Insert(i, numericScore);
-            //        }
-
-            //    }
-
-            //}
-            //if (highScoreList.Count >= 11)
-            //{
-            //    highScoreList.RemoveAt(10);
-            //}
-
-            //{
-            //    highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
-            //}
         }
 
         public void HighScoreWrite()
         {
             XmlWriter writer = XmlWriter.Create("Resources/HighScore.xml", null);
 
-            writer.WriteStartElement("Score");
+            writer.WriteStartElement("HighScore");
 
             foreach (Score s in highScoreList)
             {
-                writer.WriteStartElement("playerProfile");
+                writer.WriteStartElement("Score");
 
                 writer.WriteElementString("numericScore", s.numericScore);
                 writer.WriteElementString("name", s.name);
-                writer.WriteElementString("date", s.date);
+                //writer.WriteElementString("date", s.date);
 
                 writer.WriteEndElement();
             }
@@ -170,6 +167,9 @@ namespace BrickBreaker
             // setup starting ball values
             int ballX = this.Width / 2 - 10;
             int ballY = this.Height - paddle.height - 80;
+
+            // Setting up powerup values
+            powerUpSize = 35;
 
             // Creates a new ball
             int xSpeed = 6;
@@ -204,7 +204,9 @@ namespace BrickBreaker
 
             lifeCountX = this.Width - this.Width / 8;
             lifeCountY = this.Height - this.Height / 8;
-    }
+            scoreCountX = this.Width / 8;
+            scoreCountY = this.Height - this.Height / 8;
+        }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
@@ -240,7 +242,7 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-            
+
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
             {
@@ -253,6 +255,33 @@ namespace BrickBreaker
 
             // Move ball
             ball.Move();
+
+            // Move and collide with Powerups
+            foreach (powerUP p in powerUpList)
+            {
+                p.Fall();
+            }
+
+            if (powerUpList.Count > 0)
+            {
+                if (powerUpList[0].y >= this.Height)
+                {
+                    powerUpList.RemoveAt(0);
+                    numericScore = numericScore - 50;
+                }
+                foreach (powerUP p in powerUpList)
+                {
+                    if (p.powerUpCollide(paddle))
+                    {
+                        int i = powerUpList.IndexOf(p);
+                        powerUpEffect = p.type;
+                        powerUpList.RemoveAt(i);
+                        paddle.PoweredUp(powerUpEffect);
+                    }
+                }
+
+            }
+
 
             // Check for collision with top and side walls
             ball.WallCollision(this);
@@ -284,10 +313,8 @@ namespace BrickBreaker
             {
                 if (ball.BlockCollision(b))
                 {
-
-                    powerUP newPowerUp = new powerUP(ball.x, ball.y);
-                    powerUpList.Add(newPowerUp);
-
+                    PowerUpGeneration();
+                
                     numericScore = numericScore + 100;
 
 
@@ -323,17 +350,18 @@ namespace BrickBreaker
             form.Controls.Add(ps);
             form.Controls.Remove(this);
 
-            HighScoreRead();
-            HighScoreWrite();
+             HighScoreRead();
+             HighScoreWrite();
         }
 
         public void GameScreen_Paint(object sender, PaintEventArgs e)
         {
+            // Draws powerups
             if (powerUpList.Count > 0)
             {
                 foreach (powerUP b in powerUpList)
                 {
-                    e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                    e.Graphics.FillEllipse(blockBrush, b.x, b.y, b.size, b.size);
                 }
             }
 
@@ -350,7 +378,8 @@ namespace BrickBreaker
             // Draws ball
             e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
 
-
+            // Draws game screen text
+            e.Graphics.DrawString(numericScore.ToString(), drawFont, ballBrush, scoreCountX, scoreCountY, null);
             e.Graphics.DrawString(lives.ToString(), drawFont, ballBrush, lifeCountX, lifeCountY, null);
         }
 
@@ -380,6 +409,47 @@ namespace BrickBreaker
         {
             paddle.x = ((this.Width / 2) - (paddle.width / 2));
             paddle.y = (this.Height - paddle.height) - 60;
+
+        }
+
+        public void PowerUpGeneration()
+        {
+            int dropChance = powerUpChance.Next(1, 4);
+
+            if (dropChance == 1)
+            {
+                int typeChance = powerUpGen.Next(1, 7);
+
+                powerUP newPowerUp = new powerUP(ball.x, ball.y, typeChance, powerUpSize);
+                powerUpList.Add(newPowerUp);
+            }
+        }
+        public void FreezePowerup()
+        {
+
+        }
+
+        public void ShieldPowerup()
+        {
+
+        }
+
+        public void FirePowerup()
+        {
+
+        }
+
+        public void MultiPowerup()
+        {
+
+        }
+
+        public void LengthPowerup()
+        {
+
+        }
+        public void DoublePowerup()
+        {
 
         }
     }

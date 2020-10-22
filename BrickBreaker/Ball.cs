@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-//big chungus is funny 
 
 namespace BrickBreaker
 
@@ -270,7 +269,6 @@ namespace BrickBreaker
             ySpeed = (12 - xSpeed) * -1;
 
         }
-
         public void stop()
         {
             xSpeed = 0;
