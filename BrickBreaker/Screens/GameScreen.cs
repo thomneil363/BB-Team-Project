@@ -104,7 +104,11 @@ namespace BrickBreaker
             }
             reader.Close();
 
-
+            //Temp fix
+            if (highScoreList.Count > 3)
+            {
+                highScoreList.RemoveAt(3);
+            }
             //Put in 3 more test scores then break point to ensure they're there
 
             if (Convert.ToInt32(highScoreList[highScoreList.Count - 1].numericScore) <= numericScore)
@@ -205,6 +209,15 @@ namespace BrickBreaker
             lifeCountY = this.Height - this.Height / 12 ;
             scoreCountX = this.Width / 8;
             scoreCountY = this.Height - this.Height / 12;
+            Score tempScore1 = new Score(Convert.ToString(3), "");
+            highScoreList.Insert(0, tempScore1);
+
+            Score tempScore2 = new Score(Convert.ToString(2), "");
+            highScoreList.Insert(0, tempScore2);
+
+            Score tempScore3 = new Score(Convert.ToString(1), "");
+            highScoreList.Insert(0, tempScore3);
+
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
