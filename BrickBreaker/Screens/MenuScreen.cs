@@ -15,7 +15,7 @@ namespace BrickBreaker
     {
         #region variable declarations
 
-        //booleans for key presses
+        //booleans for key press
         Boolean upArrowDown, downArrowDown, spaceDown;
 
         //rectangles for menu buttons
