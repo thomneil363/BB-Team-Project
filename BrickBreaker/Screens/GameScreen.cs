@@ -185,14 +185,16 @@ namespace BrickBreaker
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
             
             blocks.Clear();
-            int x = 10;
+            //int x = 10;
 
-            while (blocks.Count < 12)
-            {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
-            }
+            //while (blocks.Count < 12)
+            //{
+            //    x += 57;
+            //    Block b1 = new Block(x, 10, 1, Color.White);
+            //    blocks.Add(b1);
+            //}
+
+
 
             #endregion
 
