@@ -55,7 +55,6 @@ namespace BrickBreaker
         public int powerUpSize;
         public int powerUpEffect;
 
-
         //int boostSize, boostDraw, boostSpeed;
         List<powerUP> powerUpList = new List<powerUP>();
 
@@ -203,9 +202,9 @@ namespace BrickBreaker
             TPause();
 
             lifeCountX = this.Width - this.Width / 8;
-            lifeCountY = this.Height - this.Height / 8;
+            lifeCountY = this.Height - this.Height / 12 ;
             scoreCountX = this.Width / 8;
-            scoreCountY = this.Height - this.Height / 8;
+            scoreCountY = this.Height - this.Height / 12;
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -262,6 +261,19 @@ namespace BrickBreaker
                 p.Fall();
             }
 
+            foreach (powerUP p in powerUpList)
+            {
+                if (p.powerUpCollide(paddle))
+                {
+                    int i = powerUpList.IndexOf(p);
+                    powerUpList.RemoveAt(i);
+                    powerUpEffect = p.type;
+                    paddle.PoweredUp(powerUpEffect);
+
+                    break;
+                }
+            }
+
             if (powerUpList.Count > 0)
             {
                 if (powerUpList[0].y >= this.Height)
@@ -269,20 +281,7 @@ namespace BrickBreaker
                     powerUpList.RemoveAt(0);
                     numericScore = numericScore - 50;
                 }
-                foreach (powerUP p in powerUpList)
-                {
-                    if (p.powerUpCollide(paddle))
-                    {
-                        int i = powerUpList.IndexOf(p);
-                        powerUpEffect = p.type;
-                        powerUpList.RemoveAt(i);
-                        paddle.PoweredUp(powerUpEffect);
-                    }
-                }
-
             }
-
-
             // Check for collision with top and side walls
             ball.WallCollision(this);
 
@@ -290,6 +289,12 @@ namespace BrickBreaker
             if (ball.BottomCollision(this))
             {
                 lives--;
+
+                // Clearing powerups on screen
+                if (powerUpList.Count > 0)
+                {
+                    powerUpList.Clear();
+                }
 
                 // Moves the ball back to origin
                 TPaddleReset();
@@ -424,31 +429,31 @@ namespace BrickBreaker
                 powerUpList.Add(newPowerUp);
             }
         }
-        public void FreezePowerup()
+        public void FreezePowerup() // 1
         {
 
         }
 
-        public void ShieldPowerup()
+        public void ShieldPowerup() // 2
         {
 
         }
 
-        public void FirePowerup()
+        public void FirePowerup() // 3
         {
 
         }
 
-        public void MultiPowerup()
+        public void MultiPowerup() // 4
         {
 
         }
 
-        public void LengthPowerup()
+        public void LengthPowerup() // 5
         {
 
         }
-        public void DoublePowerup()
+        public void DoublePowerup() // 6
         {
 
         }

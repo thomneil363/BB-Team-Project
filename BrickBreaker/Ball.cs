@@ -172,37 +172,37 @@ namespace BrickBreaker
 
             if (collisionPoint >= (pWidth * .80)) // Top 25%
             {
-                xSpeed = 8;
+                xSpeed = 7;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .70))
             {
-                xSpeed = 7;
+                xSpeed = 6;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .60))
             {
-                xSpeed = 6;
+                xSpeed = 5;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .40)) // Middle Point
             {
-                xSpeed = 5;
+                xSpeed = 4;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .30))
             {
-                xSpeed = 6;
+                xSpeed = 5;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .20))
             {
-                xSpeed = 7;
+                xSpeed = 6;
                 setY();
             }
             else // Bottom 25%
             {
-                xSpeed = 8;
+                xSpeed = 7;
                 setY();
             }
         }
@@ -213,7 +213,7 @@ namespace BrickBreaker
 
             if (collisionPoint >= (pWidth * .80)) // Top 20%
             {
-                xSpeed = 6;
+                xSpeed = 5;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .70))
@@ -243,7 +243,7 @@ namespace BrickBreaker
             }
             else // Bottom 20%
             {
-                xSpeed = 6;
+                xSpeed = 5;
                 setY();
             }
         }
@@ -266,7 +266,7 @@ namespace BrickBreaker
         }
         private void setY()
         {
-            ySpeed = (12 - xSpeed) * -1;
+            ySpeed = (10 - xSpeed) * -1;
 
         }
         public void stop()
@@ -276,8 +276,8 @@ namespace BrickBreaker
         }
         public void go()
         {
-            xSpeed = -6;
-            ySpeed = -6;
+            xSpeed = -5;
+            ySpeed = -5;
         }
     }
 }
