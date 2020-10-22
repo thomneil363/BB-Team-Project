@@ -55,14 +55,16 @@ namespace BrickBreaker
         public int powerUpSize;
         public int powerUpEffect;
 
+
         //int boostSize, boostDraw, boostSpeed;
         List<powerUP> powerUpList = new List<powerUP>();
 
         //large paddle lot of balls faster shield bottom
         Random randGen = new Random();
+
         Random powerUpChance = new Random();
         Random powerUpGen = new Random();
-        
+
 
         //List that will build highscores using a class to then commit them to a XML file
         List<Score> highScoreList = new List<Score>();
@@ -96,8 +98,6 @@ namespace BrickBreaker
                     //reader.ReadToNextSibling("date");
                     //string date = reader.ReadString();
 
-
-
                     Score s = new Score(numericScore, name);
                     highScoreList.Add(s);
                 //}
@@ -108,28 +108,23 @@ namespace BrickBreaker
 
             //Put in 3 more test scores then break point to ensure they're there
 
-            //if (highScoreList[highScoreList.Count - 1].numericScore < numericScore)
-            //{
-            //     for (int i = 0; i <= highScoreList.Count(); i++)
-            //     {
-            //         if( highScoreList[Score.numericScore] > highScoreList[i])                       
-            //         {
-            //         highScoreList.Insert(i, Score.numericScore);
-            //         }
+            if (Convert.ToInt32(highScoreList[highScoreList.Count - 1].numericScore) <= numericScore)
+            {
+                for (int i = 0; i <= highScoreList.Count; i++)
+                {
+                    if (Convert.ToInt32(highScoreList[i].numericScore) <= numericScore)
+                    {
+                        Score s = new Score(Convert.ToString(numericScore), "");
+                        highScoreList.Insert(i, s);
+                        break;
+                    }
+                }
+            }
+            if (highScoreList.Count > 3)
+            {
+                highScoreList.RemoveAt(3);
+            }
 
-            //     }
-
-            //   }
-            //   if (highScoreList.Count >= 11)
-            //   {
-            //        highScoreList.RemoveAt(10);
-            //   }
-
-            //    {
-            //        highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
-            //    }
-
-            //reader.Close();
         }
 
         public void HighScoreWrite()
@@ -321,10 +316,6 @@ namespace BrickBreaker
                     PowerUpGeneration();
                 
                     numericScore = numericScore + 100;
-
-                    // use scoreLabel to display the score to the user
-                    //scoreLabel.Text = "";
-                    //scoreLabel.Text = numericScore + "";
 
 
                     blocks.Remove(b);

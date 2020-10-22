@@ -15,11 +15,8 @@ namespace BrickBreaker
     {
         #region variable declarations
 
-        //booleans for key presses
+        //booleans for key press
         Boolean upArrowDown, downArrowDown, spaceDown;
-
-        //brush for player
-        SolidBrush drawBrush = new SolidBrush(Color.Silver);
 
         //rectangles for menu buttons
         Rectangle playRec, highscoresRec, settingsRec, exitRec;

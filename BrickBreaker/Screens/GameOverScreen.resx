@@ -117,25 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="settingsTimer.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
-  </metadata>
-  <data name="instructionsLabel.Text" xml:space="preserve">
-    <value>Use the arrow keys to move left and right.
-
-
-1 HP -                                Freezes paddle - 
-
-2 HP -                                Adds balls - 
-
-3 HP -                                Doubles points - 
- 
-4 HP -                                Shield - 
-
-5 HP -                                Lose points - 
-
-6 HP -                                              
-
-</value>
-  </data>
 </root>
