@@ -7,7 +7,7 @@ namespace BrickBreaker
 { // Designed by Thomas Neilson
     public class Ball
     {
-        public int x, y, xSpeed, ySpeed, size; 
+        public int x, y, xSpeed, ySpeed, size, unclaimedScore = 0; 
         public Color colour;
         public bool movingRight;
 
@@ -74,8 +74,13 @@ namespace BrickBreaker
             if (ballRec.IntersectsWith(paddleRec))
             {
                 // Always set y movement to up when colliding with paddle.
-                Up();
+                if (p.firey == true)
+                {
+                    unclaimedScore = -25;
+                }
 
+
+                Up();
                 // Checking if ball is hitting the paddle side
                 if (ballRec.IntersectsWith(rightRec) || ballRec.IntersectsWith(leftRec))
                 {
@@ -151,6 +156,14 @@ namespace BrickBreaker
             }
         }
 
+        public void ShieldCollision(UserControl UC)
+        {
+            if (y >= (UC.Height - size))
+            {
+                Up();
+            }
+        }
+
         public bool BottomCollision(UserControl UC)
         {
             Boolean didCollide = false;
@@ -172,37 +185,37 @@ namespace BrickBreaker
 
             if (collisionPoint >= (pWidth * .80)) // Top 25%
             {
-                xSpeed = 7;
+                xSpeed = 8;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .70))
             {
-                xSpeed = 6;
+                xSpeed = 7;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .60))
             {
-                xSpeed = 5;
+                xSpeed = 6;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .40)) // Middle Point
             {
-                xSpeed = 4;
+                xSpeed = 5;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .30))
             {
-                xSpeed = 5;
+                xSpeed = 6;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .20))
             {
-                xSpeed = 6;
+                xSpeed = 7;
                 setY();
             }
             else // Bottom 25%
             {
-                xSpeed = 7;
+                xSpeed = 8;
                 setY();
             }
         }
@@ -213,37 +226,37 @@ namespace BrickBreaker
 
             if (collisionPoint >= (pWidth * .80)) // Top 20%
             {
-                xSpeed = 5;
+                xSpeed = 6;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .70))
             {
-                xSpeed = 4;
+                xSpeed = 5;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .60))
             {
-                xSpeed = 3;
+                xSpeed = 4;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .40)) // Middle Point
             {
-                xSpeed = 2;
+                xSpeed = 3;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .30))
             {
-                xSpeed = 3;
+                xSpeed = 4;
                 setY();
             }
             else if (collisionPoint >= (pWidth * .20))
             {
-                xSpeed = 4;
+                xSpeed = 5;
                 setY();
             }
             else // Bottom 20%
             {
-                xSpeed = 5;
+                xSpeed = 6;
                 setY();
             }
         }
@@ -266,7 +279,7 @@ namespace BrickBreaker
         }
         private void setY()
         {
-            ySpeed = (10 - xSpeed) * -1;
+            ySpeed = (12 - xSpeed) * -1;
 
         }
         public void stop()
@@ -276,8 +289,8 @@ namespace BrickBreaker
         }
         public void go()
         {
-            xSpeed = -5;
-            ySpeed = -5;
+            xSpeed = -6;
+            ySpeed = -6;
         }
     }
 }
