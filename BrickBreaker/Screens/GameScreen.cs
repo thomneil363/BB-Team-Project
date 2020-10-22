@@ -386,8 +386,9 @@ namespace BrickBreaker
             }
 
             // Draws paddle
-            paddleBrush.Color = paddle.colour;
-            e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+            //paddleBrush.Color = paddle.colour;
+            //e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+            e.Graphics.DrawImage(Properties.Resources.sign, paddle.x, paddle.y, paddle.width, paddle.height);
 
             // Draws blocks
             foreach (Block b in blocks)
@@ -446,7 +447,7 @@ namespace BrickBreaker
         }
         public void FreezePowerup() // 1 Timed
         {
-
+              
         }
 
         public void ShieldPowerup() // 2 Constant until bottom hit
