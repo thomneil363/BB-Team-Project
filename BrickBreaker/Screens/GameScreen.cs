@@ -48,12 +48,12 @@ namespace BrickBreaker
         public int lifeCountX;
         public int lifeCountY;
 
+
         //int boostSize, boostDraw, boostSpeed;
         List<powerUP> powerUpList = new List<powerUP>();
         //large paddle lot of balls faster shield bottom
         Random randGen = new Random();
 
-        
 
         //List that will build highscores using a class to then commit them to a XML file
         List<Score> highScoreList = new List<Score>();
@@ -84,8 +84,6 @@ namespace BrickBreaker
                     reader.ReadToNextSibling("date");
                     string date = reader.ReadString();
 
-
-
                     Score s = new Score(numericScore, name);
                     highScoreList.Add(s);
                 }
@@ -93,28 +91,43 @@ namespace BrickBreaker
 
             //Put in 3 more test scores then break point to ensure they're there
 
-               //if (highScoreList[highScoreList.Count - 1].numericScore < numericScore)
-               //{
-               //     for (int i = 0; i <= highScoreList.Count(); i++)
-               //     {
-               //         if( highScoreList[Score.numericScore] > highScoreList[i])                       
-               //         {
-               //         highScoreList.Insert(i, Score.numericScore);
-               //         }
-                        
-               //     }
+            if (Convert.ToInt32(highScoreList[highScoreList.Count - 1].numericScore) <= numericScore)
+            {
+                for (int i = 0; i <= highScoreList.Count; i++)
+                {
+                    if (Convert.ToInt32(highScoreList[i].numericScore) <= numericScore)
+                    {
+                        Score s = new Score(Convert.ToString(numericScore), "");
+                        highScoreList.Insert(i, s);
+                        break;
+                    }
+                }
+            }
+            if (highScoreList.Count > 3)
+            {
+                highScoreList.RemoveAt(3);
+            }
 
-            //   }
-            //   if (highScoreList.Count >= 11)
-            //   {
-            //        highScoreList.RemoveAt(10);
-            //   }
-               
+            //if (highScoreList[highScoreList.Count - 1].numericScore < numericScore)
+            //{
+            //    for (int i = 0; i <= highScoreList.Count(); i++)
             //    {
-            //        highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
+            //        if (highScoreList[Score.numericScore] > highScoreList[i])
+            //        {
+            //            highScoreList.Insert(i, numericScore);
+            //        }
+
             //    }
 
-            //reader.Close();
+            //}
+            //if (highScoreList.Count >= 11)
+            //{
+            //    highScoreList.RemoveAt(10);
+            //}
+
+            //{
+            //    highScoreLabel.Text += s.name + " " + s.numericScore + " " + s.date + "\n";
+            //}
         }
 
         public void HighScoreWrite()
@@ -277,10 +290,6 @@ namespace BrickBreaker
 
                     numericScore = numericScore + 100;
 
-                    //use scoreLabel to display the score to the user
-                    //scoreLabel.Text = "";
-                    //scoreLabel.Text = numericScore + "";
-
 
                     blocks.Remove(b);
 
@@ -347,24 +356,24 @@ namespace BrickBreaker
 
         public void TPause() // Breifly pauses the game at the start and after a death
         {
-            //ball.stop();
-            //paddle.stop();
-            //Form1.pause = 0;
-            //gameTimer.Enabled = false;
-            //pauseTimer.Enabled = true;
+            ball.stop();
+            paddle.stop();
+            Form1.pause = 0;
+            gameTimer.Enabled = false;
+            pauseTimer.Enabled = true;
         }
 
         private void PauseTimer_Tick(object sender, EventArgs e)
         {
-            //Form1.pause++;
+            Form1.pause++;
 
-            //if (Form1.pause >= 2)
-            //{
-            //    ball.go();
-            //    paddle.go();
-            //    gameTimer.Enabled = true;
-            //    pauseTimer.Enabled = false;
-            //}
+            if (Form1.pause >= 2)
+            {
+                ball.go();
+                paddle.go();
+                gameTimer.Enabled = true;
+                pauseTimer.Enabled = false;
+            }
         }
 
         public void TPaddleReset()

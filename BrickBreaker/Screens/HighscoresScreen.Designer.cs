@@ -51,7 +51,7 @@
             // 
             this.highscoreBox.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highscoreBox.ForeColor = System.Drawing.Color.White;
-            this.highscoreBox.Image = global::BrickBreaker.Properties.Resources.highscoreBox;
+        //    this.highscoreBox.Image = global::BrickBreaker.Properties.Resources.highscoreBox;
             this.highscoreBox.Location = new System.Drawing.Point(420, 25);
             this.highscoreBox.Name = "highscoreBox";
             this.highscoreBox.Size = new System.Drawing.Size(400, 500);
@@ -62,7 +62,7 @@
             // 
             this.highscoreTitle.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.highscoreTitle.ForeColor = System.Drawing.Color.White;
-            this.highscoreTitle.Image = global::BrickBreaker.Properties.Resources.highscoreTitleSprite;
+//            this.highscoreTitle.Image = global::BrickBreaker.Properties.Resources.highscoreTitleSprite;
             this.highscoreTitle.Location = new System.Drawing.Point(71, 85);
             this.highscoreTitle.Name = "highscoreTitle";
             this.highscoreTitle.Size = new System.Drawing.Size(255, 180);
@@ -73,7 +73,7 @@
             // 
             this.brick1.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brick1.ForeColor = System.Drawing.Color.White;
-            this.brick1.Image = global::BrickBreaker.Properties.Resources.greenBrick;
+//            this.brick1.Image = global::BrickBreaker.Properties.Resources.greenBrick;
             this.brick1.Location = new System.Drawing.Point(321, 104);
             this.brick1.Name = "brick1";
             this.brick1.Size = new System.Drawing.Size(58, 32);
@@ -84,7 +84,7 @@
             // 
             this.brick3.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brick3.ForeColor = System.Drawing.Color.White;
-            this.brick3.Image = global::BrickBreaker.Properties.Resources.greenBrick;
+  //          this.brick3.Image = global::BrickBreaker.Properties.Resources.greenBrick;
             this.brick3.Location = new System.Drawing.Point(40, 25);
             this.brick3.Name = "brick3";
             this.brick3.Size = new System.Drawing.Size(58, 32);
@@ -95,7 +95,7 @@
             // 
             this.brick2.Font = new System.Drawing.Font("Tahoma", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.brick2.ForeColor = System.Drawing.Color.White;
-            this.brick2.Image = global::BrickBreaker.Properties.Resources.greenBrick;
+   //         this.brick2.Image = global::BrickBreaker.Properties.Resources.greenBrick;
             this.brick2.Location = new System.Drawing.Point(144, 309);
             this.brick2.Name = "brick2";
             this.brick2.Size = new System.Drawing.Size(58, 32);
