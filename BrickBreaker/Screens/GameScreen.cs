@@ -52,10 +52,13 @@ namespace BrickBreaker
         public int lifeCountY;
         public int scoreCountX;
         public int scoreCountY;
+        public int scoreMultiplierX;
+        public int scoreMultiplierY;
 
         // Powerup Ints
         public int powerUpSize;
         public int powerUpEffect;
+        public int scoreMultiplier = 1;
 
         //int boostSize, boostDraw, boostSpeed;
         List<powerUP> powerUpList = new List<powerUP>();
@@ -199,6 +202,14 @@ namespace BrickBreaker
 
 
 
+            while (blocks.Count < 12)
+            {
+                x += 57;
+                Block b1 = new Block(x, 10, 1, Color.White);
+                blocks.Add(b1);
+            }
+            
+
             #endregion
 
             // start the game engine loop
@@ -214,6 +225,9 @@ namespace BrickBreaker
             lifeCountY = this.Height - this.Height / 12 ;
             scoreCountX = this.Width / 8;
             scoreCountY = this.Height - this.Height / 12;
+            scoreMultiplierX = this.Width / 2;
+            scoreMultiplierY = this.Height - this.Height / 12;
+
             Score tempScore1 = new Score(Convert.ToString(3), "");
             highScoreList.Insert(0, tempScore1);
 
@@ -259,6 +273,33 @@ namespace BrickBreaker
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
+            // Score Update
+            numericScore += paddle.unclaimedScore * scoreMultiplier;
+            numericScore += ball.unclaimedScore;
+            ball.unclaimedScore = 0;
+            paddle.unclaimedScore = 0;
+
+            // Powerup Block
+            if (paddle.frozen == true)
+            {
+                FreezePowerup();
+            }
+            else if (paddle.firey == true)
+            {
+                FirePowerup();
+            }
+            else if (paddle.speedy == true)
+            {
+                MirrorPowerup();
+            }
+            else if (paddle.longer == true)
+            {
+                LengthPowerup();
+            }
+            else if (paddle.doubled == true)
+            {
+                DoublePowerup();
+            }
 
             // Move the paddle
             if (leftArrowDown && paddle.x > 0)
@@ -306,26 +347,33 @@ namespace BrickBreaker
             // Check for ball hitting bottom of screen
             if (ball.BottomCollision(this))
             {
-                lives--;
-
-                // Clearing powerups on screen
-                if (powerUpList.Count > 0)
+                if (paddle.shielded == true)
                 {
-                    powerUpList.Clear();
+                    ShieldPowerup();
                 }
-
-                // Moves the ball back to origin
-                TPaddleReset();
-
-                ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
-                ball.y = (this.Height - paddle.height) - 85;
-
-                TPause();
-
-                if (lives == 0)
+                else
                 {
-                    gameTimer.Enabled = false;
-                    OnEnd();
+                    lives--;
+
+                    // Clearing powerups on screen
+                    if (powerUpList.Count > 0)
+                    {
+                        powerUpList.Clear();
+                    }
+
+                    // Moves the ball back to origin
+                    TPaddleReset();
+
+                    ball.x = ((paddle.x - (ball.size / 2)) + (paddle.width / 2));
+                    ball.y = (this.Height - paddle.height) - 85;
+
+                    TPause();
+
+                    if (lives == 0)
+                    {
+                        gameTimer.Enabled = false;
+                        OnEnd();
+                    }
                 }
             }
             // Check for collision of ball with paddle, (incl. paddle movement)
@@ -338,7 +386,7 @@ namespace BrickBreaker
                 {
                     PowerUpGeneration();
                 
-                    numericScore = numericScore + 100;
+                    numericScore = numericScore + 100 * scoreMultiplier;
 
 
                     blocks.Remove(b);
@@ -405,6 +453,7 @@ namespace BrickBreaker
             // Draws game screen text
             e.Graphics.DrawString(numericScore.ToString(), drawFont, ballBrush, scoreCountX, scoreCountY, null);
             e.Graphics.DrawString(lives.ToString(), drawFont, ballBrush, lifeCountX, lifeCountY, null);
+            e.Graphics.DrawString(scoreMultiplier.ToString(), drawFont, ballBrush, scoreMultiplierX, scoreMultiplierY, null);
         }
 
         public void TPause() // Breifly pauses the game at the start and after a death
@@ -438,7 +487,7 @@ namespace BrickBreaker
 
         public void PowerUpGeneration()
         {
-            int dropChance = powerUpChance.Next(1, 4);
+            int dropChance = powerUpChance.Next(1, 2);
 
             if (dropChance == 1)
             {
@@ -450,31 +499,83 @@ namespace BrickBreaker
         }
         public void FreezePowerup() // 1 Timed
         {
-              
+
+            paddle.frozenTimer = paddle.frozenTimer - 1;
+
+            if (paddle.speed != 4)
+            {
+                paddle.speed = 4;
+            }
+            if (paddle.frozenTimer <= 0)
+            {
+                paddle.frozen = false;
+                paddle.speed = 8;
+            }
+
         }
 
         public void ShieldPowerup() // 2 Constant until bottom hit
         {
-
+            ball.ShieldCollision(this);
+            paddle.shielded = false;
         }
 
         public void FirePowerup() // 3 Timed
         {
+            paddle.fireyTimer -= 1;
 
+            scoreMultiplier = 3;
+
+            if (paddle.fireyTimer <= 0)
+            {
+                paddle.firey = false;
+                scoreMultiplier = 3;
+            }
         }
 
-        public void MultiPowerup() // 4 Constant until ball die.
+        public void MirrorPowerup() // 4 Timed
         {
+            paddle.speedyTimer = paddle.speedyTimer - 1;
 
+            if (paddle.speed != 20)
+            {
+                paddle.speed = 20;
+            }
+            
+            paddle.speedyTimer -= 1;
+
+            if (paddle.speedyTimer <= 0)
+            {
+                paddle.speed = 8;
+                paddle.speedy = false;
+                scoreMultiplier = 1;
+            }
         }
 
         public void LengthPowerup() // 5 Timed
         {
+            paddle.longerTimer -= 1;
 
+            paddle.width = 160;
+
+            if (paddle.doubledTimer <= 0)
+            {
+                paddle.width = 160;
+                paddle.doubled = false;
+                scoreMultiplier = 1;
+            }
         }
         public void DoublePowerup() // 6 Timed
         {
+            paddle.doubledTimer -= 1;
 
+            scoreMultiplier = 2;
+
+            if (paddle.doubledTimer <= 0)
+            {
+                paddle.doubled = false;
+                scoreMultiplier /= 2;
+            }
         }
     }
 }
