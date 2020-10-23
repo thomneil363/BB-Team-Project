@@ -684,13 +684,13 @@ namespace BrickBreaker
                 {
                     pauseButtonDown = false;
                     //stop menu timer
-                    pauseMenuOpen = false; 
+                    pauseMenuOpen = false;
                     gameTimer.Enabled = true;
                     pauseMenuTimer.Enabled = false;
                     TPause();
                 }
             }
-            
+
             // Checking if exit button pressed
             if (playerRec.IntersectsWith(exitRec))
             {
@@ -704,7 +704,7 @@ namespace BrickBreaker
                 }
             }
             Refresh();
-
+        }
         public void LevelLoad()
         {
             XmlReader reader = XmlReader.Create("Resources/level" + Convert.ToString(currentLevel) + ".xml", null);
