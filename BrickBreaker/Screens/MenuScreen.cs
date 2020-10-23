@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
+using System.Media;
 
 namespace BrickBreaker
 {
@@ -27,6 +28,8 @@ namespace BrickBreaker
         //images for button sprites and title
         Image playButtonSprite, highscoreButtonSprite, settingsButtonSprite, exitButtonSprite, playerSprite;
 
+        //soundplayer for menu sound
+        SoundPlayer menuSound = new SoundPlayer(Properties.Resources.menuSound);
         #endregion variable declarations
 
         #region component initialization and general setup
@@ -128,20 +131,21 @@ namespace BrickBreaker
                     //stop menu timer
                     menuTimer.Enabled = false;
 
-                    // Goes to the game screen
-                    GameScreen gs = new GameScreen();
+                    // Goes to the name input screen
+                    NameInputScreen nis = new NameInputScreen();
                     Form form = this.FindForm();
 
-                    form.Controls.Add(gs);
+                    form.Controls.Add(nis);
                     form.Controls.Remove(this);
 
-                    gs.Location = new Point((form.Width - gs.Width) / 2, (form.Height - gs.Height) / 2);
+                    nis.Location = new Point((form.Width - nis.Width) / 2, (form.Height - nis.Height) / 2);
                 }
                 if (downArrowDown == true)
                 {
                     playerRec = new Rectangle(highscoresRec.X + 20, highscoresRec.Y + 15, 10, 10);
                     downArrowDown = false;
 
+                    menuSound.Play();
                     Thread.Sleep(150);
                 }
             }
@@ -169,6 +173,7 @@ namespace BrickBreaker
                 {
                     playerRec = new Rectangle(playRec.X + 20, playRec.Y + 15, 10, 10);
 
+                    menuSound.Play();
                     Thread.Sleep(150);
                 }
                 if (downArrowDown == true)
@@ -176,6 +181,7 @@ namespace BrickBreaker
                     playerRec = new Rectangle(settingsRec.X + 20, settingsRec.Y + 15, 10, 10);
                     downArrowDown = false;
 
+                    menuSound.Play();
                     Thread.Sleep(150);
                 }
             }
@@ -203,6 +209,7 @@ namespace BrickBreaker
                 {
                     playerRec = new Rectangle(highscoresRec.X + 20, highscoresRec.Y + 15, 10, 10);
 
+                    menuSound.Play();
                     Thread.Sleep(150);
                 }
                 if (downArrowDown == true)
@@ -210,6 +217,7 @@ namespace BrickBreaker
                     playerRec = new Rectangle(exitRec.X + 20, exitRec.Y + 15, 10, 10);
                     downArrowDown = false;
 
+                    menuSound.Play();
                     Thread.Sleep(150);
                 }
             }
@@ -227,6 +235,7 @@ namespace BrickBreaker
                 {
                     playerRec = new Rectangle(settingsRec.X + 20, settingsRec.Y + 15, 10, 10);
 
+                    menuSound.Play();
                     Thread.Sleep(150);
                 }
             }

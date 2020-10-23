@@ -71,6 +71,12 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screens\NameInputScreen.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Screens\NameInputScreen.Designer.cs">
+      <DependentUpon>NameInputScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Screens\GameOverScreen.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </Compile>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Screens\NameInputScreen.resx">
+      <DependentUpon>NameInputScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Screens\GameOverScreen.resx">
       <DependentUpon>GameOverScreen.cs</DependentUpon>
@@ -222,6 +231,14 @@
     <None Include="Resources\pinkBrick.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\sridhar.png" />
+    <None Include="Resources\Shield PowerUp.png" />
+    <None Include="Resources\big stretch pog.png" />
+    <None Include="Resources\coldcoldocldoclo.png" />
+    <None Include="Resources\Double Points PowerUp.png" />
+    <None Include="Resources\douvle.png" />
+    <None Include="Resources\Fire Anti PowerUp.png" />
+    <None Include="Resources\menuSound.wav" />
     <None Include="Resources\sign.png" />
     <None Include="Resources\whiteBrick.png" />
     <None Include="Resources\level8.xml">

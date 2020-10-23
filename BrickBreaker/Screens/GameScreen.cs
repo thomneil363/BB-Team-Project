@@ -42,6 +42,7 @@ namespace BrickBreaker
 
         // Images
         Image paddleImage = Properties.Resources.sign;
+        Image ballImage = Properties.Resources.ballSprite;
 
         // Fonts
         Font drawFont = new Font("Tahoma", 20);
@@ -447,8 +448,6 @@ namespace BrickBreaker
             }
 
             // Draws paddle
-            //paddleBrush.Color = paddle.colour;
-            //e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
             e.Graphics.DrawImage(paddleImage, paddle.x, paddle.y, paddle.width, paddle.height);
 
             // Draws blocks
@@ -458,7 +457,7 @@ namespace BrickBreaker
             }
 
             // Draws ball
-            e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+            e.Graphics.DrawImage(ballImage, ball.x, ball.y, ball.size, ball.size);
 
             // Draws game screen text
             e.Graphics.DrawString(numericScore.ToString(), drawFont, ballBrush, scoreCountX, scoreCountY, null);

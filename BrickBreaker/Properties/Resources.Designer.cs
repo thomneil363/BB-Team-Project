@@ -82,9 +82,39 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap big_stretch_pog {
+            get {
+                object obj = ResourceManager.GetObject("big_stretch_pog", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap blueBrick {
             get {
                 object obj = ResourceManager.GetObject("blueBrick", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap coldcoldocldoclo {
+            get {
+                object obj = ResourceManager.GetObject("coldcoldocldoclo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Double_Points_PowerUp {
+            get {
+                object obj = ResourceManager.GetObject("Double_Points_PowerUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -95,6 +125,16 @@ namespace BrickBreaker.Properties {
         internal static System.IO.UnmanagedMemoryStream DoublePoints_PowerUP {
             get {
                 return ResourceManager.GetStream("DoublePoints PowerUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap douvle {
+            get {
+                object obj = ResourceManager.GetObject("douvle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -114,6 +154,16 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap exitSettingsButtonSprite {
             get {
                 object obj = ResourceManager.GetObject("exitSettingsButtonSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Fire_Anti_PowerUp {
+            get {
+                object obj = ResourceManager.GetObject("Fire_Anti_PowerUp", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -414,6 +464,15 @@ namespace BrickBreaker.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream menuSound {
+            get {
+                return ResourceManager.GetStream("menuSound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream Mirror_PowerUP {
             get {
                 return ResourceManager.GetStream("Mirror PowerUP", resourceCulture);
@@ -524,6 +583,16 @@ namespace BrickBreaker.Properties {
         internal static System.Drawing.Bitmap sign {
             get {
                 object obj = ResourceManager.GetObject("sign", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sridhar {
+            get {
+                object obj = ResourceManager.GetObject("sridhar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

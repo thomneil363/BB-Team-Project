@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Windows.Forms;
 using WMPLib;
+using System.Media;
 
 namespace BrickBreaker
 {
@@ -21,7 +22,8 @@ namespace BrickBreaker
         Boolean upArrowDown, downArrowDown, spaceDown;
 
         //booleans for fullscreen and mute toggles
-        Boolean fullscreen, mute;
+        Boolean fullscreen = false; 
+        Boolean mute = false;
 
         //rectangles for menu buttons
         Rectangle muteRec, fullscreenRec, exitRec;
@@ -31,6 +33,13 @@ namespace BrickBreaker
 
         //images for button sprites and title
         Image muteButtonSprite, fullscreenButtonSprite, exitSettingsButtonSprite, playerSprite;
+
+        //soundplayer for menu sound
+        SoundPlayer menuSound = new SoundPlayer(Properties.Resources.menuSound);
+
+        //used for volume toggle
+        WindowsMediaPlayer wmp = new WindowsMediaPlayer();
+
 
         #endregion variable declarations
 
@@ -126,21 +135,26 @@ namespace BrickBreaker
             {
                 if (spaceDown == true)
                 {
-                    //used for volume toggle
-                    WindowsMediaPlayer wmp = new WindowsMediaPlayer();
-
                     //toggle program mute
                     if (mute == true)
-                    { 
+                    {
                         wmp.settings.volume = 100;
 
+                        menuSound.Play();
+
                         mute = false;
+                        spaceDown = false;
+
+                        return;
                     }
                     if (mute == false)
                     {
                         wmp.settings.volume = 0;
 
                         mute = true;
+                        spaceDown = false;
+
+                        return;
                     }
                 }
                 if (downArrowDown == true)
@@ -148,10 +162,13 @@ namespace BrickBreaker
                     playerRec = new Rectangle(fullscreenRec.X + 20, fullscreenRec.Y + 15, 10, 10);
                     downArrowDown = false;
 
+                    menuSound.Play();
+
                     Thread.Sleep(150);
                 }
             }
-            #endregion play
+            #endregion mute
+
 
             #region fullscreen
             if (playerRec.IntersectsWith(fullscreenRec))
@@ -181,6 +198,7 @@ namespace BrickBreaker
                 {
                     playerRec = new Rectangle(muteRec.X + 20, muteRec.Y + 15, 10, 10);
 
+                    menuSound.Play();
                     Thread.Sleep(150);
                 }
                 if (downArrowDown == true)
@@ -188,6 +206,7 @@ namespace BrickBreaker
                     playerRec = new Rectangle(exitRec.X + 20, exitRec.Y + 15, 10, 10);
                     downArrowDown = false;
 
+                    menuSound.Play();
                     Thread.Sleep(150);
                 }
             }
@@ -215,6 +234,7 @@ namespace BrickBreaker
                 {
                     playerRec = new Rectangle(fullscreenRec.X + 20, fullscreenRec.Y + 15, 10, 10);
 
+                    menuSound.Play();
                     Thread.Sleep(150);
                 }
             }
