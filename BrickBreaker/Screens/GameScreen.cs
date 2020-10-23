@@ -191,7 +191,7 @@ namespace BrickBreaker
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
             
             blocks.Clear();
-            LevelLoad();
+            Level1Load();
             #endregion
 
             // start the game engine loop
@@ -587,7 +587,7 @@ namespace BrickBreaker
                 scoreMultiplier /= 2;
             }
         }
-        public void LevelLoad()
+        public void Level1Load()
         {
             XmlReader reader = XmlReader.Create("Resources/level1.xml", null);
 
