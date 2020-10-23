@@ -124,9 +124,9 @@
     <value>Use the arrow keys to move left and right.
 
 
-1 HP -                                Freezes paddle - 
+1 HP -                                Slows paddle - 
 
-2 HP -                                Adds balls - 
+2 HP -                                Mirror Controls - 
 
 3 HP -                                Doubles points - 
  
@@ -134,7 +134,9 @@
 
 5 HP -                                Lose points - 
 
-6 HP -                                              
+6 HP -                                Longer paddle - 
+
+7 HP - 
 
 </value>
   </data>

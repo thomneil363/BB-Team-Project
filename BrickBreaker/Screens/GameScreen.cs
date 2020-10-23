@@ -45,12 +45,18 @@ namespace BrickBreaker
         SolidBrush blockBrush = new SolidBrush(Color.Red);
         SolidBrush backBrush = new SolidBrush(Color.Black);
 
-
+        // Images
         Image paddleImage = Properties.Resources.sign;
+        Image ballImage = Properties.Resources.ballSprite;
 
         // Fonts
         Font drawFont = new Font("Tahoma", 20);
+
         Font largeDrawFont = new Font("Tahoma", 40);
+
+        // currentlevel
+        int currentLevel = 11;
+
         #endregion
 
         // Life Count Text Positions
@@ -102,8 +108,8 @@ namespace BrickBreaker
 
             while (reader.Read())
             {
-                //if (reader.NodeType == XmlNodeType.Text)
-                //{
+                if (reader.NodeType == XmlNodeType.Text)
+                {
                     reader.ReadToFollowing("Score");
 
                     reader.ReadToNextSibling("numericScore");
@@ -117,7 +123,7 @@ namespace BrickBreaker
 
                     Score s = new Score(numericScore, name);
                     highScoreList.Add(s);
-                //}
+                }
 
             }
             reader.Close();
@@ -185,8 +191,8 @@ namespace BrickBreaker
             leftArrowDown = rightArrowDown = false;
 
             // setup starting paddle values and create paddle object
-            int paddleWidth = 200;
-            int paddleHeight = 150;
+            int paddleWidth = 75;
+            int paddleHeight = 35;
             int paddleX = ((this.Width / 2) - (paddleWidth / 2));
             int paddleY = (this.Height - paddleHeight) - 60;
             int paddleSpeed = 8;
@@ -211,25 +217,7 @@ namespace BrickBreaker
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
             
             blocks.Clear();
-            //int x = 10;
-
-            //while (blocks.Count < 12)
-            //{
-            //    x += 57;
-            //    Block b1 = new Block(x, 10, 1, Color.White);
-            //    blocks.Add(b1);
-            //}
-
-
-
-            while (blocks.Count < 12)
-            {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
-            }
-            
-
+            LevelLoad();
             #endregion
 
             // start the game engine loop
@@ -258,7 +246,6 @@ namespace BrickBreaker
 
             Score tempScore3 = new Score(Convert.ToString(1), "");
             highScoreList.Insert(0, tempScore3);
-
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -439,23 +426,60 @@ namespace BrickBreaker
                 
                     numericScore = numericScore + 100 * scoreMultiplier;
 
-
-                    blocks.Remove(b);
+                    if (b.hp == 1)
+                    {
+                        blocks.Remove(b);
+                    }
+                    else if (b.hp == 2)
+                    {
+                        b.hp = 1;
+                        b.blockImage = Properties.Resources.redBrick;
+                    }
+                    else if (b.hp == 3)
+                    {
+                        b.hp = 2;
+                        b.blockImage = Properties.Resources.orangeBrick;
+                    }
+                    else if (b.hp == 4)
+                    {
+                        b.hp = 3;
+                        b.blockImage = Properties.Resources.yellowBrick;
+                    }
+                    else if (b.hp == 5)
+                    {
+                        b.hp = 4;
+                        b.blockImage = Properties.Resources.greenBrick;
+                    }
+                    else if (b.hp == 6)
+                    {
+                        b.hp = 5;
+                        b.blockImage = Properties.Resources.blueBrick;
+                    }
+                    else if (b.hp == 7)
+                    {
+                        b.hp = 6;
+                        b.blockImage = Properties.Resources.pinkBrick;
+                    }
 
                     if (blocks.Count == 0)
                     {
-                        gameTimer.Enabled = false;
-                        OnEnd();
+                        try
+                        {
+                            gameTimer.Enabled = false;
+                            currentLevel++;
+                            LevelLoad();
+                        }
+                        catch
+                        {
+                            OnEnd();
+                        }
                     }
 
                     break;
 
                 }
             }
-
-
             SolidBrush boostBrush = new SolidBrush(Color.OliveDrab);
-
             //redraw the screen
             Refresh();
         }
@@ -465,7 +489,7 @@ namespace BrickBreaker
         {
             // Goes to the game over screen
             Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
+            GameOverScreen ps = new GameOverScreen();
             
             ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
 
@@ -488,18 +512,16 @@ namespace BrickBreaker
             }
 
             // Draws paddle
-            //paddleBrush.Color = paddle.colour;
-            //e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
             e.Graphics.DrawImage(paddleImage, paddle.x, paddle.y, paddle.width, paddle.height);
 
             // Draws blocks
             foreach (Block b in blocks)
             {
-                e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                e.Graphics.DrawImage(b.blockImage, b.x, b.y, b.width, b.height);
             }
 
             // Draws ball
-            e.Graphics.FillRectangle(ballBrush, ball.x, ball.y, ball.size, ball.size);
+            e.Graphics.DrawImage(ballImage, ball.x, ball.y, ball.size, ball.size);
 
             // Draws game screen text
             e.Graphics.DrawString(numericScore.ToString(), drawFont, ballBrush, scoreCountX, scoreCountY, null);
@@ -639,6 +661,7 @@ namespace BrickBreaker
             }
         }
 
+
         private void PauseMenuTimer_Tick(object sender, EventArgs e)
         {
             // UI Navigation
@@ -680,6 +703,60 @@ namespace BrickBreaker
                 }
             }
             Refresh();
+
+        public void LevelLoad()
+        {
+            XmlReader reader = XmlReader.Create("Resources/level" + Convert.ToString(currentLevel) + ".xml", null);
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    int x = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToFollowing("y");
+                    int y = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToFollowing("hp");
+                    int hp = Convert.ToInt32(reader.ReadString());
+
+                    Image blockImage = Properties.Resources.whiteBrick;
+
+                    if (hp == 1)
+                    {
+                        blockImage = Properties.Resources.redBrick;
+                    }
+                    else if (hp == 2)
+                    {
+                        blockImage = Properties.Resources.orangeBrick;
+                    }
+                    else if (hp == 3)
+                    {
+                        blockImage = Properties.Resources.yellowBrick;
+                    }
+                    else if (hp == 4)
+                    {
+                        blockImage = Properties.Resources.greenBrick;
+                    }
+                    else if (hp == 5)
+                    {
+                        blockImage = Properties.Resources.blueBrick;
+                    }
+                    else if (hp == 6)
+                    {
+                        blockImage = Properties.Resources.pinkBrick;
+                    }
+                    else if (hp == 7)
+                    {
+                        blockImage = Properties.Resources.whiteBrick;
+                    }
+
+                    Block newBlock = new Block(x, y, hp, blockImage);
+                    blocks.Add(newBlock);
+                }
+            }
+            reader.Close();
+
         }
     }
 }
