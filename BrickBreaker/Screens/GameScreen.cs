@@ -40,7 +40,7 @@ namespace BrickBreaker
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
 
-
+        // Images
         Image paddleImage = Properties.Resources.sign;
 
         // Fonts
@@ -89,8 +89,8 @@ namespace BrickBreaker
 
             while (reader.Read())
             {
-                //if (reader.NodeType == XmlNodeType.Text)
-                //{
+                if (reader.NodeType == XmlNodeType.Text)
+                {
                     reader.ReadToFollowing("Score");
 
                     reader.ReadToNextSibling("numericScore");
@@ -104,7 +104,7 @@ namespace BrickBreaker
 
                     Score s = new Score(numericScore, name);
                     highScoreList.Add(s);
-                //}
+                }
 
             }
             reader.Close();
@@ -191,6 +191,7 @@ namespace BrickBreaker
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
             
             blocks.Clear();
+            LevelLoad();
             //int x = 10;
 
             //while (blocks.Count < 12)
@@ -199,15 +200,6 @@ namespace BrickBreaker
             //    Block b1 = new Block(x, 10, 1, Color.White);
             //    blocks.Add(b1);
             //}
-
-
-
-            while (blocks.Count < 12)
-            {
-                x += 57;
-                Block b1 = new Block(x, 10, 1, Color.White);
-                blocks.Add(b1);
-            }
             
 
             #endregion
@@ -414,7 +406,7 @@ namespace BrickBreaker
         {
             // Goes to the game over screen
             Form form = this.FindForm();
-            MenuScreen ps = new MenuScreen();
+            GameOverScreen ps = new GameOverScreen();
             
             ps.Location = new Point((form.Width - ps.Width) / 2, (form.Height - ps.Height) / 2);
 
@@ -576,6 +568,83 @@ namespace BrickBreaker
                 paddle.doubled = false;
                 scoreMultiplier /= 2;
             }
+        }
+        public void LevelLoad()
+        {
+            //while (reader.Read())
+            //{
+            //    //if (reader.NodeType == XmlNodeType.Text)
+            //    //{
+            //    reader.ReadToFollowing("Score");
+
+            //    reader.ReadToNextSibling("numericScore");
+            //    string numericScore = reader.ReadString();
+
+            //    reader.ReadToNextSibling("name");
+            //    string name = reader.ReadString();
+
+            //    //reader.ReadToNextSibling("date");
+            //    //string date = reader.ReadString();
+
+            //    Score s = new Score(numericScore, name);
+            //    highScoreList.Add(s);
+            //    //}
+
+            //}
+            //reader.Close();
+
+
+
+            XmlReader reader = XmlReader.Create("Resources/level4.xml", null);
+
+            while (reader.Read())
+            {
+                if (reader.NodeType == XmlNodeType.Text)
+                {
+                    int x = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToFollowing("y");
+                    int y = Convert.ToInt32(reader.ReadString());
+
+                    reader.ReadToFollowing("hp");
+                    int hp = Convert.ToInt32(reader.ReadString());
+
+                    Image blockImage = Properties.Resources.whiteBrick;
+
+                    if (hp == 1)
+                    {
+                        blockImage = Properties.Resources.redBrick;
+                    }
+                    else if (hp == 2)
+                    {
+                        blockImage = Properties.Resources.orangeBrick;
+                    }
+                    else if (hp == 3)
+                    {
+                        blockImage = Properties.Resources.yellowBrick;
+                    }
+                    else if (hp == 4)
+                    {
+                        blockImage = Properties.Resources.greenBrick;
+                    }
+                    else if (hp == 5)
+                    {
+                        blockImage = Properties.Resources.blueBrick;
+                    }
+                    else if (hp == 6)
+                    {
+                        blockImage = Properties.Resources.pinkBrick;
+                    }
+                    else if (hp == 7)
+                    {
+                        blockImage = Properties.Resources.whiteBrick;
+                    }
+
+                    Block newBlock = new Block(x, y, hp, blockImage);
+                    blocks.Add(newBlock);
+                }
+            }
+            reader.Close();
         }
     }
 }
