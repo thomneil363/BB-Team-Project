@@ -563,6 +563,49 @@ namespace BrickBreaker
             }
         }
 
+        private void pauseMenuTimer_Tick_1(object sender, EventArgs e)
+        {
+            // UI Navigation
+            if (downArrowDown == true)
+            {
+                playerRec = new Rectangle(exitRec.X + 20, exitRec.Y + 15, 10, 10);
+                downArrowDown = false;
+            }
+            if (upArrowDown == true)
+            {
+                playerRec = new Rectangle(playRec.X + 20, playRec.Y + 15, 10, 10);
+                upArrowDown = false;
+            }
+
+            // Checking if play button pressed
+            if (playerRec.IntersectsWith(playRec))
+            {
+                if (pauseButtonDown == true)
+                {
+                    pauseButtonDown = false;
+                    //stop menu timer
+                    pauseMenuOpen = false;
+                    gameTimer.Enabled = true;
+                    pauseMenuTimer.Enabled = false;
+                    TPause();
+                }
+            }
+
+            // Checking if exit button pressed
+            if (playerRec.IntersectsWith(exitRec))
+            {
+                if (pauseButtonDown == true)
+                {
+                    pauseButtonDown = false;
+                    pauseMenuOpen = false;
+                    gameTimer.Enabled = false;
+                    pauseMenuTimer.Enabled = false;
+                    OnEnd();
+                }
+            }
+            Refresh();
+        }
+
         public void TPaddleReset() // Resets the paddle position
         {
             paddle.x = ((this.Width / 2) - (paddle.width / 2));
@@ -661,49 +704,6 @@ namespace BrickBreaker
                 scoreMultiplier /= 2;
             }
         }
-
-
-        private void PauseMenuTimer_Tick(object sender, EventArgs e)
-        {
-            // UI Navigation
-            if (downArrowDown == true)
-            {
-                playerRec = new Rectangle(exitRec.X + 20, exitRec.Y + 15, 10, 10);
-                downArrowDown = false;
-            }
-            if (upArrowDown == true)
-            {
-                playerRec = new Rectangle(playRec.X + 20, playRec.Y + 15, 10, 10);
-                upArrowDown = false;
-            }
-
-            // Checking if play button pressed
-            if (playerRec.IntersectsWith(playRec))
-            {
-                if (pauseButtonDown == true)
-                {
-                    pauseButtonDown = false;
-                    //stop menu timer
-                    pauseMenuOpen = false; 
-                    gameTimer.Enabled = true;
-                    pauseMenuTimer.Enabled = false;
-                    TPause();
-                }
-            }
-            
-            // Checking if exit button pressed
-            if (playerRec.IntersectsWith(exitRec))
-            {
-                if (pauseButtonDown == true)
-                {
-                    pauseButtonDown = false;
-                    pauseMenuOpen = false;
-                    gameTimer.Enabled = false;
-                    pauseMenuTimer.Enabled = false;
-                    OnEnd();
-                }
-            }
-            Refresh();
 
         public void LevelLoad()
         {
