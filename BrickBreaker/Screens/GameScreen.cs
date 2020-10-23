@@ -571,30 +571,6 @@ namespace BrickBreaker
         }
         public void LevelLoad()
         {
-            //while (reader.Read())
-            //{
-            //    //if (reader.NodeType == XmlNodeType.Text)
-            //    //{
-            //    reader.ReadToFollowing("Score");
-
-            //    reader.ReadToNextSibling("numericScore");
-            //    string numericScore = reader.ReadString();
-
-            //    reader.ReadToNextSibling("name");
-            //    string name = reader.ReadString();
-
-            //    //reader.ReadToNextSibling("date");
-            //    //string date = reader.ReadString();
-
-            //    Score s = new Score(numericScore, name);
-            //    highScoreList.Add(s);
-            //    //}
-
-            //}
-            //reader.Close();
-
-
-
             XmlReader reader = XmlReader.Create("Resources/level4.xml", null);
 
             while (reader.Read())
