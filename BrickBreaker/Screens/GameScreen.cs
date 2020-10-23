@@ -55,7 +55,8 @@ namespace BrickBreaker
         Font largeDrawFont = new Font("Tahoma", 40);
 
         // currentlevel
-        int currentLevel = 11;
+
+        int currentLevel = 1;
 
         #endregion
 
