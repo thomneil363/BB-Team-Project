@@ -46,6 +46,8 @@ namespace BrickBreaker
         SolidBrush backBrush = new SolidBrush(Color.Black);
 
 
+        Image paddleImage = Properties.Resources.sign;
+
         // Fonts
         Font drawFont = new Font("Tahoma", 20);
         Font largeDrawFont = new Font("Tahoma", 40);
@@ -155,7 +157,7 @@ namespace BrickBreaker
             foreach (Score s in highScoreList)
             {
                 writer.WriteStartElement("Score");
-
+                    
                 writer.WriteElementString("numericScore", s.numericScore);
                 writer.WriteElementString("name", s.name);
                 //writer.WriteElementString("date", s.date);
@@ -183,12 +185,13 @@ namespace BrickBreaker
             leftArrowDown = rightArrowDown = false;
 
             // setup starting paddle values and create paddle object
-            int paddleWidth = 80;
-            int paddleHeight = 20;
+            int paddleWidth = 200;
+            int paddleHeight = 150;
             int paddleX = ((this.Width / 2) - (paddleWidth / 2));
             int paddleY = (this.Height - paddleHeight) - 60;
             int paddleSpeed = 8;
             paddle = new Paddle(paddleX, paddleY, paddleWidth, paddleHeight, paddleSpeed, Color.White);
+
 
             // setup starting ball values
             int ballX = this.Width / 2 - 10;
@@ -198,8 +201,8 @@ namespace BrickBreaker
             powerUpSize = 35;
 
             // Creates a new ball
-            int xSpeed = 6;
-            int ySpeed = 6;
+            int xSpeed = 10;
+            int ySpeed = 10;
             int ballSize = 20;
             ball = new Ball(ballX, ballY, xSpeed, ySpeed, ballSize);
 
@@ -208,7 +211,16 @@ namespace BrickBreaker
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
             
             blocks.Clear();
-            int x = 10;
+            //int x = 10;
+
+            //while (blocks.Count < 12)
+            //{
+            //    x += 57;
+            //    Block b1 = new Block(x, 10, 1, Color.White);
+            //    blocks.Add(b1);
+            //}
+
+
 
             while (blocks.Count < 12)
             {
@@ -217,6 +229,7 @@ namespace BrickBreaker
                 blocks.Add(b1);
             }
             
+
             #endregion
 
             // start the game engine loop
@@ -475,8 +488,9 @@ namespace BrickBreaker
             }
 
             // Draws paddle
-            paddleBrush.Color = paddle.colour;
-            e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+            //paddleBrush.Color = paddle.colour;
+            //e.Graphics.FillRectangle(paddleBrush, paddle.x, paddle.y, paddle.width, paddle.height);
+            e.Graphics.DrawImage(paddleImage, paddle.x, paddle.y, paddle.width, paddle.height);
 
             // Draws blocks
             foreach (Block b in blocks)
@@ -547,6 +561,7 @@ namespace BrickBreaker
         }
         public void FreezePowerup() // 1 Timed
         {
+
             paddle.frozenTimer = paddle.frozenTimer - 1;
 
             if (paddle.speed != 4)
@@ -558,6 +573,7 @@ namespace BrickBreaker
                 paddle.frozen = false;
                 paddle.speed = 8;
             }
+
         }
 
         public void ShieldPowerup() // 2 Constant until bottom hit

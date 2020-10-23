@@ -61,6 +61,15 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream BallHitBrick {
+            get {
+                return ResourceManager.GetStream("BallHitBrick", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap ballSprite {
@@ -81,6 +90,15 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream DoublePoints_PowerUP {
+            get {
+                return ResourceManager.GetStream("DoublePoints PowerUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap exitButtonSprite {
@@ -97,6 +115,15 @@ namespace BrickBreaker.Properties {
             get {
                 object obj = ResourceManager.GetObject("exitSettingsButtonSprite", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Fire_PowerUP {
+            get {
+                return ResourceManager.GetStream("Fire PowerUP", resourceCulture);
             }
         }
         
@@ -188,6 +215,15 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Ice_PowerUP {
+            get {
+                return ResourceManager.GetStream("Ice PowerUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap instructionsBox {
@@ -198,56 +234,80 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Length_PowerUP {
+            get {
+                return ResourceManager.GetStream("Length PowerUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Level_1_background {
+        internal static System.Drawing.Bitmap Level_9_background {
             get {
-                object obj = ResourceManager.GetObject("Level_1_background", resourceCulture);
+                object obj = ResourceManager.GetObject("Level_9_background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-        ///&lt;level&gt;
-        ///  &lt;brick&gt;
-        ///    &lt;x&gt;-7&lt;/x&gt;
-        ///    &lt;y&gt;10&lt;/y&gt;
-        ///    &lt;hp&gt;1&lt;/hp&gt;
-        ///  &lt;/brick&gt;
-        ///  &lt;brick&gt;
-        ///    &lt;x&gt;47&lt;/x&gt;
-        ///    &lt;y&gt;10&lt;/y&gt;
-        ///    &lt;hp&gt;1&lt;/hp&gt;
-        ///  &lt;/brick&gt;
-        ///  &lt;brick&gt;
-        ///    &lt;x&gt;101&lt;/x&gt;
-        ///    &lt;y&gt;10&lt;/y&gt;
-        ///    &lt;hp&gt;1&lt;/hp&gt;
-        ///  &lt;/brick&gt;
-        ///  &lt;brick&gt;
-        ///    &lt;x&gt;155&lt;/x&gt;
-        ///    &lt;y&gt;10&lt;/y&gt;
-        ///    &lt;hp&gt;1&lt;/hp&gt;
-        ///  &lt;/brick&gt;
-        ///  &lt;brick&gt;
-        ///    &lt;x&gt;209&lt;/x&gt;
-        ///    &lt;y&gt;10&lt;/y&gt;
-        ///    &lt;hp&gt;1&lt;/hp&gt;
-        ///  &lt;/brick&gt;
-        ///  &lt;brick&gt;
-        ///    &lt;x&gt;263&lt;/x&gt;
-        ///    &lt;y&gt;10&lt;/y&gt;
-        ///    &lt;hp&gt;1&lt;/hp&gt;
-        ///  &lt;/brick&gt;
-        ///  &lt;brick&gt;
-        ///    &lt;x&gt;317&lt;/x&gt;
-        ///    &lt;y&gt;10&lt;/y&gt;
-        ///   [rest of string was truncated]&quot;;.
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///.
         /// </summary>
-        internal static string Level1 {
+        internal static string level1 {
             get {
-                return ResourceManager.GetString("Level1", resourceCulture);
+                return ResourceManager.GetString("level1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///.
+        /// </summary>
+        internal static string level12 {
+            get {
+                return ResourceManager.GetString("level12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///.
+        /// </summary>
+        internal static string level13 {
+            get {
+                return ResourceManager.GetString("level13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///.
+        /// </summary>
+        internal static string level2 {
+            get {
+                return ResourceManager.GetString("level2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+        ///.
+        /// </summary>
+        internal static string level6 {
+            get {
+                return ResourceManager.GetString("level6", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Mirror_PowerUP {
+            get {
+                return ResourceManager.GetStream("Mirror PowerUP", resourceCulture);
             }
         }
         
@@ -272,12 +332,11 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
         /// </summary>
-        internal static System.Drawing.Bitmap paddleSprite {
+        internal static System.IO.UnmanagedMemoryStream PaddleHitBall {
             get {
-                object obj = ResourceManager.GetObject("paddleSprite", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetStream("PaddleHitBall", resourceCulture);
             }
         }
         
@@ -332,11 +391,30 @@ namespace BrickBreaker.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.IO.UnmanagedMemoryStream similar to System.IO.MemoryStream.
+        /// </summary>
+        internal static System.IO.UnmanagedMemoryStream Shield_PowerUP {
+            get {
+                return ResourceManager.GetStream("Shield PowerUP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
         internal static System.Drawing.Bitmap shieldSprite {
             get {
                 object obj = ResourceManager.GetObject("shieldSprite", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sign {
+            get {
+                object obj = ResourceManager.GetObject("sign", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

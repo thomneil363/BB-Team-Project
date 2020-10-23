@@ -161,9 +161,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-
-    <Folder Include="bin\Debug\" />
-
     <COMReference Include="AxWMPLib">
       <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
       <VersionMajor>1</VersionMajor>
@@ -181,7 +178,6 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
-
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\blueBrick.png" />
@@ -226,6 +222,35 @@
     <None Include="Resources\pinkBrick.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\level2.xml" />
+    <None Include="Resources\level1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\level13.xml" />
+    <None Include="Resources\level6.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\level12.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Resources\sign.png" />
+    <None Include="Resources\Smashing-Yuri_Santana-1233262689.wav" />
+    <None Include="Resources\Level 1 background.png" />
+    <None Include="Resources\Level 2 backgound.jpg" />
+    <None Include="Resources\Level 3 background.png" />
+    <None Include="Resources\Level 4 background.png" />
+    <None Include="Resources\Level 5 background.jpg" />
+    <None Include="Resources\Level 6 background.png" />
+    <None Include="Resources\Level 7 background.jpg" />
+    <None Include="Resources\Level 8 background.png" />
+    <None Include="Resources\Level 9 background.png" />
+    <None Include="Resources\Slap-SoundMaster13-49669815.wav" />
+    <None Include="Resources\Stretching Growing-SoundBible.com-1422617810.wav" />
+    <None Include="Resources\Cha_Ching_Register-Muska666-173262285.wav" />
+    <None Include="Resources\Mirror Shattering-SoundBible.com-1752328245.wav" />
+    <None Include="Resources\Avalanche-SoundBible.com-1774366762.wav" />
+    <None Include="Resources\End_Fx-Mike_Devils-724852498.wav" />
+    <None Include="Resources\European_Dragon_Roaring_and_breathe_fire-daniel-simon.wav" />
     <None Include="Resources\instructionsBox.png" />
     <None Include="Resources\exitSettingsButtonSprite.png" />
     <None Include="Resources\muteButtonSprite.png" />
@@ -234,15 +259,14 @@
     <None Include="Resources\gameoverTitleSprite.png" />
     <None Include="Resources\shieldSprite.png" />
     <None Include="Resources\highscoreTitleSprite.png" />
-
     <None Include="Resources\HighScore.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="bin\Debug\Resources\level6.xml" />
+    <None Include="bin\Debug\Resources\level7.xml" />
     <Content Include="HighScore.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-
-    <Content Include="Level1.xml" />
     <None Include="Resources\Level 1 background.jpg" />
     <None Include="Resources\redBrick.png" />
     <None Include="Resources\blueBrick.png" />
@@ -250,6 +274,7 @@
     <None Include="Resources\greenBrick.png" />
     <None Include="Resources\orangeBrick.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
