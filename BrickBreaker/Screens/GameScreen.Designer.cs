@@ -51,6 +51,7 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.pauseMenuTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // gameTimer
@@ -61,7 +62,7 @@
             // 
             // pauseTimer
             // 
-            this.pauseTimer.Interval = 1000;
+            this.pauseTimer.Interval = 20;
             this.pauseTimer.Tick += new System.EventHandler(this.PauseTimer_Tick);
             // 
             // label1
@@ -264,6 +265,11 @@
             this.label20.Size = new System.Drawing.Size(60, 34);
             this.label20.TabIndex = 19;
             // 
+            // pauseMenuTimer
+            // 
+            this.pauseMenuTimer.Interval = 20;
+            this.pauseMenuTimer.Tick += new System.EventHandler(this.PauseMenuTimer_Tick);
+            // 
             // GameScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(120F, 120F);
@@ -290,7 +296,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(5);
             this.Name = "GameScreen";
             this.Size = new System.Drawing.Size(1062, 688);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.GameScreen_Paint);
@@ -326,6 +332,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label label20;
-
+        private System.Windows.Forms.Timer pauseMenuTimer;
     }
 }

@@ -23,7 +23,11 @@ namespace BrickBreaker
         #region global values
 
         //player1 button control keys - DO NOT CHANGE
-        Boolean leftArrowDown, rightArrowDown;
+        Boolean leftArrowDown, rightArrowDown, upArrowDown, downArrowDown, pauseButtonDown;
+
+        // Pause Buttons
+        Rectangle playRec, exitRec, playerRec, menuRec;
+        Image playButtonSprite, exitButtonSprite, playerSprite, pauseBorderSprite;
 
         // Game values
         int lives;
@@ -39,10 +43,12 @@ namespace BrickBreaker
         SolidBrush paddleBrush = new SolidBrush(Color.White);
         SolidBrush ballBrush = new SolidBrush(Color.White);
         SolidBrush blockBrush = new SolidBrush(Color.Red);
+        SolidBrush backBrush = new SolidBrush(Color.Black);
 
 
         // Fonts
         Font drawFont = new Font("Tahoma", 20);
+        Font largeDrawFont = new Font("Tahoma", 40);
         #endregion
 
         // Life Count Text Positions
@@ -72,11 +78,18 @@ namespace BrickBreaker
         List<Score> highScoreList = new List<Score>();
         int numericScore;
 
-
+        // Pause menu variables
+        bool pauseMenuOpen;
         public GameScreen()
         {
             InitializeComponent();
             OnStart();
+
+            // Loading pause screen sprites
+            playButtonSprite = Properties.Resources.playButtonSprite;
+            exitButtonSprite = Properties.Resources.exitButtonSprite;
+            playerSprite = Properties.Resources.ballSprite;
+            pauseBorderSprite = Properties.Resources.highscoreBox;
         }
 
         public void HighScoreRead()
@@ -156,6 +169,13 @@ namespace BrickBreaker
 
         public void OnStart()
         {
+            // Rectangles for pause screen
+            menuRec = new Rectangle(this.Width / 4, this.Height / 4, this.Width / 2, this.Height / 2);
+            playRec = new Rectangle(menuRec.Width - 150 /2, menuRec.Height - 100 , 150, 50);
+            exitRec = new Rectangle(menuRec.Width - 150 / 2, menuRec.Height + 50, 150, 50);
+            playerRec = new Rectangle(playRec.X + 20, playRec.Y + 15, 10, 10);
+
+            //set player location
             //set life counter
             lives = 3;
 
@@ -208,6 +228,7 @@ namespace BrickBreaker
             ball.y = (this.Height - paddle.height) - 85;
             TPause();
 
+            // Variables for game screen text positioning
             lifeCountX = this.Width - this.Width / 8;
             lifeCountY = this.Height - this.Height / 12 ;
             scoreCountX = this.Width / 8;
@@ -215,6 +236,7 @@ namespace BrickBreaker
             scoreMultiplierX = this.Width / 2;
             scoreMultiplierY = this.Height - this.Height / 12;
 
+            // Temporary scores
             Score tempScore1 = new Score(Convert.ToString(3), "");
             highScoreList.Insert(0, tempScore1);
 
@@ -237,6 +259,15 @@ namespace BrickBreaker
                 case Keys.Right:
                     rightArrowDown = true;
                     break;
+                case Keys.Up:
+                    upArrowDown = true;
+                    break;
+                case Keys.Down:
+                    downArrowDown = true;
+                    break;
+                case Keys.Space:
+                    pauseButtonDown = true;
+                    break;
                 default:
                     break;
             }
@@ -253,6 +284,15 @@ namespace BrickBreaker
                 case Keys.Right:
                     rightArrowDown = false;
                     break;
+                case Keys.Up:
+                    upArrowDown = false;
+                    break;
+                case Keys.Down:
+                    downArrowDown = false;
+                    break;
+                case Keys.Space:
+                    pauseButtonDown = false;
+                    break;
                 default:
                     break;
             }
@@ -265,6 +305,16 @@ namespace BrickBreaker
             numericScore += ball.unclaimedScore;
             ball.unclaimedScore = 0;
             paddle.unclaimedScore = 0;
+
+            // Pause screen functionality
+
+            if (pauseButtonDown == true)
+            {
+                pauseButtonDown = false;
+                pauseMenuTimer.Enabled = true;
+                pauseMenuOpen = true;
+                gameTimer.Enabled = false;
+            }
 
             // Powerup Block
             if (paddle.frozen == true)
@@ -307,6 +357,7 @@ namespace BrickBreaker
                 p.Fall();
             }
 
+            // Removing powerups when collected
             foreach (powerUP p in powerUpList)
             {
                 if (p.powerUpCollide(paddle))
@@ -319,7 +370,7 @@ namespace BrickBreaker
                     break;
                 }
             }
-
+            // Removing powerups at bottom of screen
             if (powerUpList.Count > 0)
             {
                 if (powerUpList[0].y >= this.Height)
@@ -440,9 +491,20 @@ namespace BrickBreaker
             e.Graphics.DrawString(numericScore.ToString(), drawFont, ballBrush, scoreCountX, scoreCountY, null);
             e.Graphics.DrawString(lives.ToString(), drawFont, ballBrush, lifeCountX, lifeCountY, null);
             e.Graphics.DrawString(scoreMultiplier.ToString(), drawFont, ballBrush, scoreMultiplierX, scoreMultiplierY, null);
+
+            // Pause Menu Draw Functions
+            if (pauseMenuOpen)
+            {
+                e.Graphics.FillRectangle(backBrush, menuRec);
+                e.Graphics.DrawImage(pauseBorderSprite, menuRec.X, menuRec.Y, menuRec.Width, menuRec.Height);
+                e.Graphics.DrawImage(playButtonSprite, playRec.X, playRec.Y);
+                e.Graphics.DrawImage(exitButtonSprite, exitRec.X, exitRec.Y);
+                e.Graphics.DrawImage(playerSprite, playerRec.X, playerRec.Y);
+                e.Graphics.DrawString("Paused", largeDrawFont, ballBrush, menuRec.Width - 115, menuRec.Height - 50 );
+            }
         }
 
-        public void TPause() // Breifly pauses the game at the start and after a death
+        public void TPause() // Briefly pauses the game at the start and after a death
         {
             ball.stop();
             paddle.stop();
@@ -451,11 +513,11 @@ namespace BrickBreaker
             pauseTimer.Enabled = true;
         }
 
-        private void PauseTimer_Tick(object sender, EventArgs e)
+        private void PauseTimer_Tick(object sender, EventArgs e) // Timer for the pause functionality
         {
             Form1.pause++;
 
-            if (Form1.pause >= 2)
+            if (Form1.pause >= 50)
             {
                 ball.go();
                 paddle.go();
@@ -464,16 +526,16 @@ namespace BrickBreaker
             }
         }
 
-        public void TPaddleReset()
+        public void TPaddleReset() // Resets the paddle position
         {
             paddle.x = ((this.Width / 2) - (paddle.width / 2));
             paddle.y = (this.Height - paddle.height) - 60;
 
         }
 
-        public void PowerUpGeneration()
+        public void PowerUpGeneration() // Randomly decides wether a powerup spawns and it's type
         {
-            int dropChance = powerUpChance.Next(1, 2);
+            int dropChance = powerUpChance.Next(1, 5);
 
             if (dropChance == 1)
             {
@@ -535,7 +597,6 @@ namespace BrickBreaker
                 scoreMultiplier = 1;
             }
         }
-
         public void LengthPowerup() // 5 Timed
         {
             paddle.longerTimer -= 1;
@@ -544,7 +605,7 @@ namespace BrickBreaker
 
             if (paddle.doubledTimer <= 0)
             {
-                paddle.width = 160;
+                paddle.width = 80;
                 paddle.doubled = false;
                 scoreMultiplier = 1;
             }
@@ -560,6 +621,49 @@ namespace BrickBreaker
                 paddle.doubled = false;
                 scoreMultiplier /= 2;
             }
+        }
+
+        private void PauseMenuTimer_Tick(object sender, EventArgs e)
+        {
+            // UI Navigation
+            if (downArrowDown == true)
+            {
+                playerRec = new Rectangle(exitRec.X + 20, exitRec.Y + 15, 10, 10);
+                downArrowDown = false;
+            }
+            if (upArrowDown == true)
+            {
+                playerRec = new Rectangle(playRec.X + 20, playRec.Y + 15, 10, 10);
+                upArrowDown = false;
+            }
+
+            // Checking if play button pressed
+            if (playerRec.IntersectsWith(playRec))
+            {
+                if (pauseButtonDown == true)
+                {
+                    pauseButtonDown = false;
+                    //stop menu timer
+                    pauseMenuOpen = false; 
+                    gameTimer.Enabled = true;
+                    pauseMenuTimer.Enabled = false;
+                    TPause();
+                }
+            }
+            
+            // Checking if exit button pressed
+            if (playerRec.IntersectsWith(exitRec))
+            {
+                if (pauseButtonDown == true)
+                {
+                    pauseButtonDown = false;
+                    pauseMenuOpen = false;
+                    gameTimer.Enabled = false;
+                    pauseMenuTimer.Enabled = false;
+                    OnEnd();
+                }
+            }
+            Refresh();
         }
     }
 }

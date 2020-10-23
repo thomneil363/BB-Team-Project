@@ -111,7 +111,6 @@ namespace BrickBreaker
             e.Graphics.DrawImage(highscoreButtonSprite, highscoresRec.X, highscoresRec.Y);
             e.Graphics.DrawImage(settingsButtonSprite, settingsRec.X, settingsRec.Y);
             e.Graphics.DrawImage(exitButtonSprite, exitRec.X, exitRec.Y);
-
             //draw player
             e.Graphics.DrawImage(playerSprite, playerRec.X, playerRec.Y);
         }
