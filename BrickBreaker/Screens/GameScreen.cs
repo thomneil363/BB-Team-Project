@@ -165,8 +165,8 @@ namespace BrickBreaker
             leftArrowDown = rightArrowDown = false;
 
             // setup starting paddle values and create paddle object
-            int paddleWidth = 200;
-            int paddleHeight = 150;
+            int paddleWidth = 75;
+            int paddleHeight = 35;
             int paddleX = ((this.Width / 2) - (paddleWidth / 2));
             int paddleY = (this.Height - paddleHeight) - 60;
             int paddleSpeed = 8;
@@ -192,16 +192,6 @@ namespace BrickBreaker
             
             blocks.Clear();
             LevelLoad();
-            //int x = 10;
-
-            //while (blocks.Count < 12)
-            //{
-            //    x += 57;
-            //    Block b1 = new Block(x, 10, 1, Color.White);
-            //    blocks.Add(b1);
-            //}
-            
-
             #endregion
 
             // start the game engine loop
@@ -228,7 +218,6 @@ namespace BrickBreaker
 
             Score tempScore3 = new Score(Convert.ToString(1), "");
             highScoreList.Insert(0, tempScore3);
-
         }
 
         private void GameScreen_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
@@ -380,8 +369,40 @@ namespace BrickBreaker
                 
                     numericScore = numericScore + 100 * scoreMultiplier;
 
-
-                    blocks.Remove(b);
+                    if (b.hp == 1)
+                    {
+                        blocks.Remove(b);
+                    }
+                    else if (b.hp == 2)
+                    {
+                        b.hp = 1;
+                        b.blockImage = Properties.Resources.redBrick;
+                    }
+                    else if (b.hp == 3)
+                    {
+                        b.hp = 2;
+                        b.blockImage = Properties.Resources.orangeBrick;
+                    }
+                    else if (b.hp == 4)
+                    {
+                        b.hp = 3;
+                        b.blockImage = Properties.Resources.yellowBrick;
+                    }
+                    else if (b.hp == 5)
+                    {
+                        b.hp = 4;
+                        b.blockImage = Properties.Resources.greenBrick;
+                    }
+                    else if (b.hp == 6)
+                    {
+                        b.hp = 5;
+                        b.blockImage = Properties.Resources.blueBrick;
+                    }
+                    else if (b.hp == 7)
+                    {
+                        b.hp = 6;
+                        b.blockImage = Properties.Resources.pinkBrick;
+                    }
 
                     if (blocks.Count == 0)
                     {
@@ -393,10 +414,7 @@ namespace BrickBreaker
 
                 }
             }
-
-
             SolidBrush boostBrush = new SolidBrush(Color.OliveDrab);
-
             //redraw the screen
             Refresh();
         }
@@ -436,7 +454,7 @@ namespace BrickBreaker
             // Draws blocks
             foreach (Block b in blocks)
             {
-                e.Graphics.FillRectangle(blockBrush, b.x, b.y, b.width, b.height);
+                e.Graphics.DrawImage(b.blockImage, b.x, b.y, b.width, b.height);
             }
 
             // Draws ball
@@ -571,7 +589,7 @@ namespace BrickBreaker
         }
         public void LevelLoad()
         {
-            XmlReader reader = XmlReader.Create("Resources/level4.xml", null);
+            XmlReader reader = XmlReader.Create("Resources/level1.xml", null);
 
             while (reader.Read())
             {
