@@ -68,8 +68,8 @@ namespace BrickBreaker
             Rectangle ballRec = new Rectangle(x, y, size, size);
             Rectangle paddleRec = new Rectangle(p.x, p.y, p.width, p.height);
             // Paddle side generation
-            Rectangle rightRec = new Rectangle(p.x + p.width - 4, p.y - 8, 4, p.height - 8);
-            Rectangle leftRec = new Rectangle(p.x, p.y - 8, 4, p.height - 8);
+            Rectangle rightRec = new Rectangle(p.x + p.width - 4, p.y - 8, 8, p.height - 10);
+            Rectangle leftRec = new Rectangle(p.x, p.y - 8, 8, p.height - 10);
 
             if (ballRec.IntersectsWith(paddleRec))
             {
