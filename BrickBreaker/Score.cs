@@ -8,14 +8,13 @@ namespace BrickBreaker
 {
     class Score
     {
-        public string numericScore, name, date;
+        public string numericScore, name;
           
       
         public Score(string _numericScore, string _name)
         {
             numericScore = _numericScore;
             name = _name;
-            date = DateTime.Now.ToString("d");
         }
     }
 }

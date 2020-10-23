@@ -208,6 +208,7 @@
             // pauseMenuTimer
             // 
             this.pauseMenuTimer.Interval = 20;
+            this.pauseMenuTimer.Tick += new System.EventHandler(this.pauseMenuTimer_Tick_1);
             // 
             // GameScreen
             // 
