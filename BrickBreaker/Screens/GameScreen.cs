@@ -46,6 +46,9 @@ namespace BrickBreaker
 
         // Fonts
         Font drawFont = new Font("Tahoma", 20);
+
+        // currentlevel
+        int currentLevel = 11;
         #endregion
 
         // Life Count Text Positions
@@ -192,7 +195,7 @@ namespace BrickBreaker
             //TODO - replace all the code in this region eventually with code that loads levels from xml files
             
             blocks.Clear();
-            Level1Load();
+            LevelLoad();
             #endregion
 
             // start the game engine loop
@@ -407,8 +410,16 @@ namespace BrickBreaker
 
                     if (blocks.Count == 0)
                     {
-                        gameTimer.Enabled = false;
-                        OnEnd();
+                        try
+                        {
+                            gameTimer.Enabled = false;
+                            currentLevel++;
+                            LevelLoad();
+                        }
+                        catch
+                        {
+                            OnEnd();
+                        }
                     }
 
                     break;
@@ -586,9 +597,9 @@ namespace BrickBreaker
                 scoreMultiplier /= 2;
             }
         }
-        public void Level1Load()
+        public void LevelLoad()
         {
-            XmlReader reader = XmlReader.Create("Resources/level1.xml", null);
+            XmlReader reader = XmlReader.Create("Resources/level" + Convert.ToString(currentLevel) + ".xml", null);
 
             while (reader.Read())
             {
