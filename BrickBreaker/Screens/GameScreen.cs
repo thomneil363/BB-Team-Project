@@ -48,7 +48,7 @@ namespace BrickBreaker
         Font drawFont = new Font("Tahoma", 20);
 
         // currentlevel
-        int currentLevel = 11;
+        int currentLevel = 1;
         #endregion
 
         // Life Count Text Positions
